@@ -1,15 +1,15 @@
 #pragma once
 
 #include "lost.h"
-#include "layers/layer.h"
+
+class layer;
 
 class world {
 public:
   world();
   ~world();
 
-	int update(double dt);
-	int render();
+	UPDATE_RENDER
 
 	std::vector<layer> layers;
 };

@@ -1,0 +1,8 @@
+class player {
+	def player() {
+		this.x = 4;
+	}
+	def update() {
+		print(this.x);
+	}
+};

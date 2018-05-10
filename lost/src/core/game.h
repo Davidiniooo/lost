@@ -1,5 +1,6 @@
 #pragma once
 
+#include "SDL2/SDL.h"
 #include "lost.h"
 
 class game {
@@ -9,11 +10,11 @@ public:
 
   int run(uint w, uint h, double fps);
   int clean();
-  int update(double dt);
-  int render();
 
-  bool          running;
-  SDL_Window *  window;
-  SDL_Surface * screen_surface;
-  SDL_Renderer *renderer;
+  UPDATE_RENDER
+
+  bool                   running;
+  SDL_Window *           window;
+  SDL_Surface *          screen_surface;
+  SDL_Renderer *         renderer;
 };

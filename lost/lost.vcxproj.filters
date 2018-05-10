@@ -27,9 +27,19 @@
     <ClInclude Include="src\worlds\layers\layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\game_objects\game_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\worlds\layers\obj_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game_objects\game_object_template.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />
+    <None Include="scripts\player.chai" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\worlds\world.cpp">
@@ -39,6 +49,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\core\game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game_objects\game_object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\worlds\layers\obj_layer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

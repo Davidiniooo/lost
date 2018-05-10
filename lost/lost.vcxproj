@@ -85,6 +85,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)include; $(ProjectDir)src;</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(ProjectDir)lib</AdditionalLibraryDirectories>
@@ -121,6 +122,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\game_objects\game_object_template.h" />
+    <ClInclude Include="src\worlds\layers\obj_layer.h" />
+    <ClInclude Include="src\game_objects\game_object.h" />
     <ClInclude Include="src\core\game.h" />
     <ClInclude Include="src\lost.h" />
     <ClInclude Include="src\worlds\layers\layer.h" />
@@ -128,10 +132,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />
+    <None Include="scripts\player.chai" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\game.cpp" />
+    <ClCompile Include="src\game_objects\game_object.cpp" />
     <ClCompile Include="src\lost.cpp" />
+    <ClCompile Include="src\worlds\layers\obj_layer.cpp" />
     <ClCompile Include="src\worlds\world.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
