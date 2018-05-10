@@ -8,11 +8,26 @@ game::~game() {}
 using namespace std::chrono_literals;
 
 int game::run(uint w, uint h, double fps) {
-  SDL_Init(SDL_INIT_EVERYTHING);
+  window         = NULL;
+  screen_surface = NULL;
+  renderer       = NULL;
+
+  if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+    printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+    clean();
+    return -1;
+  }
 
   window = SDL_CreateWindow(
       "lost", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, NULL);
+  if (window == NULL) {
+    printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+    clean();
+    return -1;
+  }
   screen_surface = SDL_GetWindowSurface(window);
+
+  renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
   using clock = std::chrono::high_resolution_clock;
 
@@ -39,18 +54,28 @@ int game::run(uint w, uint h, double fps) {
     while (lag >= timestep) {
       lag -= timestep;
 
-      // update();
+      update((double)timestep.count() / 1000000.0);
     }
 
-    // render();
+    render();
   }
 
   return clean();
 }
 
+int game::update(double dt) {
+
+  return 0;
+}
+
+int game::render() {
+
+  return 0;
+}
+
 int game::clean() {
   SDL_DestroyWindow(window);
-
+  SDL_DestroyRenderer(renderer);
   SDL_Quit();
   return 0;
 }
