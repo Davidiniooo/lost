@@ -122,8 +122,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\core\game.h" />
-    <ClInclude Include="src\worlds\layers\layer.h" />
     <ClInclude Include="src\lost.h" />
+    <ClInclude Include="src\worlds\layers\layer.h" />
     <ClInclude Include="src\worlds\world.h" />
   </ItemGroup>
   <ItemGroup>
