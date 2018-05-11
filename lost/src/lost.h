@@ -21,3 +21,5 @@ using json = nlohmann::json;
 #define V_UPDATE_RENDER                                                        \
   virtual int update(double dt) = 0;                                           \
   virtual int render()          = 0;
+
+json json_from_file(const char *path_from_data);

@@ -20,12 +20,6 @@ int game::run(uint w, uint h, double fps) {
   current_world = new world();
   current_world->layers.push_back(new entity_layer());
 
-  std::ifstream i("data/items/apple.json");
-  json j;
-  i >> j;
-  
-  i.close();
-
   if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
     printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
     clean();
