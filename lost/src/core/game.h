@@ -3,6 +3,8 @@
 #include "SDL2/SDL.h"
 #include "lost.h"
 
+class world;
+
 class game {
 public:
   game();
@@ -13,8 +15,9 @@ public:
 
   UPDATE_RENDER
 
-  bool                   running;
-  SDL_Window *           window;
-  SDL_Surface *          screen_surface;
-  SDL_Renderer *         renderer;
+  bool          running;
+  SDL_Window *  window;
+  SDL_Surface * screen_surface;
+  SDL_Renderer *renderer;
+  world *       current_world;
 };

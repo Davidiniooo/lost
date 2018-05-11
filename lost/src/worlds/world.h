@@ -11,5 +11,5 @@ public:
 
 	UPDATE_RENDER
 
-	std::vector<layer> layers;
+	std::vector<layer*> layers;
 };

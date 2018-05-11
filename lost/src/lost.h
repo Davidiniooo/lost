@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+#include <string>
 
 typedef unsigned int  uint;
 typedef unsigned char byte;
@@ -18,5 +19,8 @@ typedef unsigned char byte;
   virtual int render()          = 0;
 
 void eval_script_func(const char *f);
+void eval_script_func(std::string s);
 void eval_script_file(const char *p);
+void eval_script_file(std::string s);
 void use_script_file(const char *f);
+void use_script_file(std::string s);

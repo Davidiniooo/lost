@@ -1,4 +1,7 @@
 #include "game.h"
+#include "game_objects/game_object.h"
+#include "worlds/layers/obj_layer.h"
+#include "worlds/world.h"
 #include <chrono>
 
 game::game() : running(true) {}
@@ -12,15 +15,9 @@ int game::run(uint w, uint h, double fps) {
   screen_surface = NULL;
   renderer       = NULL;
 
-  eval_script_func(R"(
-		var objs = Vector();
-	)");
-
-  eval_script_file("scripts/player.chai");
-
-  eval_script_func(
-      "var p = player(); p.update(); print(p.x); objs.push_back(p); "
-      "print(objs.size()); var pp = objs[0]; pp.update();");
+  current_world = new world();
+  current_world->layers.push_back(new obj_layer());
+  ((obj_layer *)current_world->layers[0])->add_obj(OBJ_TMPLT_PLAYER);
 
   if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
     printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
@@ -74,7 +71,7 @@ int game::run(uint w, uint h, double fps) {
 }
 
 int game::update(double dt) {
-
+  current_world->update(dt);
   return 0;
 }
 

@@ -4,8 +4,7 @@
 
 struct game_object_template {
 public:
-	char * script_path;
+	const char * script_path;
 };
 
-#define OBJ_TMPLT_PLAYER                                                       \
-  { "player.chai" }
+constexpr game_object_template OBJ_TMPLT_PLAYER = {"player"};

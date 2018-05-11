@@ -8,5 +8,9 @@ public:
   game_object(game_object_template t);
   ~game_object();
   UPDATE_RENDER
-	game_object_template tmplt;
+  void                 removed();
+  game_object_template tmplt;
+  uint                 index;
 };
+
+uint get_obj_index();
