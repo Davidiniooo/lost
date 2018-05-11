@@ -1,14 +1,18 @@
 #pragma once
 
+#include "data/data.h"
 #include <iostream>
+#include <nlohmann/json.hpp>
 #include <stack>
 #include <stdio.h>
 #include <stdlib.h>
-#include <vector>
 #include <string>
+#include <vector>
 
 typedef unsigned int  uint;
 typedef unsigned char byte;
+
+using json = nlohmann::json;
 
 #define UPDATE_RENDER                                                          \
   int update(double dt);                                                       \
@@ -17,10 +21,3 @@ typedef unsigned char byte;
 #define V_UPDATE_RENDER                                                        \
   virtual int update(double dt) = 0;                                           \
   virtual int render()          = 0;
-
-void eval_script_func(const char *f);
-void eval_script_func(std::string s);
-void eval_script_file(const char *p);
-void eval_script_file(std::string s);
-void use_script_file(const char *f);
-void use_script_file(std::string s);

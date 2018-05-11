@@ -1,8 +1,8 @@
 #include "game.h"
-#include "game_objects/game_object.h"
-#include "worlds/layers/obj_layer.h"
 #include "worlds/world.h"
+#include "worlds/layers/entity_layer.h"
 #include <chrono>
+#include "entities/npc.h"
 
 game::game() : running(true) {}
 
@@ -16,8 +16,7 @@ int game::run(uint w, uint h, double fps) {
   renderer       = NULL;
 
   current_world = new world();
-  current_world->layers.push_back(new obj_layer());
-  ((obj_layer *)current_world->layers[0])->add_obj(OBJ_TMPLT_PLAYER);
+  current_world->layers.push_back(new entity_layer());
 
   if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
     printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());

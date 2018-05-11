@@ -1,9 +1,0 @@
-class player {
-	var x;
-	def player() {
-		this.x = 4;
-	}
-	def update(dt) {
-		
-	}
-};
