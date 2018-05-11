@@ -90,7 +90,7 @@
     <Link>
       <AdditionalLibraryDirectories>$(ProjectDir)lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,13 +122,14 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(ProjectDir)lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\data\data.h" />
     <ClInclude Include="src\data\genders.h" />
     <ClInclude Include="src\data\races.h" />
+    <ClInclude Include="src\data\weapon_types.h" />
     <ClInclude Include="src\entities\entity.h" />
     <ClInclude Include="src\entities\npc.h" />
     <ClInclude Include="src\worlds\layers\entity_layer.h" />
@@ -142,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\game.cpp" />
+    <ClCompile Include="src\entities\npc.cpp" />
     <ClCompile Include="src\lost.cpp" />
     <ClCompile Include="src\worlds\layers\entity_layer.cpp" />
     <ClCompile Include="src\worlds\world.cpp" />

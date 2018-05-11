@@ -1,0 +1,9 @@
+#pragma once
+
+enum e_item_type {
+  ITEM_TYPE_COLLECTABLE,
+  ITEM_TYPE_MATERIAL,
+  ITEM_TYPE_CONSUMABLE,
+  ITEM_TYPE_WEAPON,
+  ITEM_TYPE_TOOL
+};

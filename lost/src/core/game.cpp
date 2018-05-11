@@ -3,6 +3,7 @@
 #include "worlds/layers/entity_layer.h"
 #include <chrono>
 #include "entities/npc.h"
+#include <fstream>
 
 game::game() : running(true) {}
 
@@ -17,6 +18,12 @@ int game::run(uint w, uint h, double fps) {
 
   current_world = new world();
   current_world->layers.push_back(new entity_layer());
+
+  std::ifstream i("data/gerhard.json");
+  json j;
+  i >> j;
+
+  npc n = npc(j);
 
   if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
     printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());

@@ -8,6 +8,8 @@ public:
   npc(json j);
   ~npc();
 
+  UPDATE_RENDER
+
   std::string name;
   e_race      race;
   e_gender    gender;

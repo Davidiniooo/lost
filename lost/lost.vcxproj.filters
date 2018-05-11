@@ -45,6 +45,9 @@
     <ClInclude Include="src\data\data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\data\weapon_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />
@@ -60,6 +63,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\worlds\layers\entity_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\npc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
