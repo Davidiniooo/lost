@@ -4,7 +4,7 @@
 
 class weapon : public item {
 public:
-  weapon();
+  weapon(json j);
   ~weapon();
 
   e_weapon_type weapon_type;       // all
@@ -13,7 +13,7 @@ public:
   double        accuracy;          // ranged
   uint          magazine_capacity; // ranged
   uint          ammo_capacity;     // ranged
-  double        reload_speed;      // ranged
+  double        reload_time;       // ranged
   double        effective_range;   // ranged
   double        recoil;            // ranged
   double        impact;            // ranged

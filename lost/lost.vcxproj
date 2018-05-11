@@ -126,27 +126,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\data\data.h" />
-    <ClInclude Include="src\data\genders.h" />
-    <ClInclude Include="src\data\races.h" />
-    <ClInclude Include="src\data\weapon_types.h" />
-    <ClInclude Include="src\entities\entity.h" />
-    <ClInclude Include="src\entities\npc.h" />
-    <ClInclude Include="src\worlds\layers\entity_layer.h" />
-    <ClInclude Include="src\core\game.h" />
-    <ClInclude Include="src\lost.h" />
-    <ClInclude Include="src\worlds\layers\layer.h" />
-    <ClInclude Include="src\worlds\world.h" />
+    <ClInclude Include="src\**\*.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\core\game.cpp" />
-    <ClCompile Include="src\entities\npc.cpp" />
-    <ClCompile Include="src\lost.cpp" />
-    <ClCompile Include="src\worlds\layers\entity_layer.cpp" />
-    <ClCompile Include="src\worlds\world.cpp" />
+    <ClCompile Include="src\**\*.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

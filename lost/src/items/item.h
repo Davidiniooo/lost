@@ -4,7 +4,7 @@
 
 class item {
 public:
-  item();
+  item(json j);
   ~item();
 
   std::string name;
