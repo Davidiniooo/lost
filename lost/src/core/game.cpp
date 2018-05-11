@@ -1,10 +1,10 @@
 #include "game.h"
-#include "worlds/world.h"
-#include "worlds/layers/entity_layer.h"
-#include <chrono>
 #include "entities/npc.h"
-#include <fstream>
 #include "items/item.h"
+#include "worlds/layers/entity_layer.h"
+#include "worlds/world.h"
+#include <chrono>
+#include <fstream>
 
 game::game() : running(true) {}
 
@@ -20,14 +20,9 @@ int game::run(uint w, uint h, double fps) {
   current_world = new world();
   current_world->layers.push_back(new entity_layer());
 
-  if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-    printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-    clean();
-    return -1;
-  }
-
   window = SDL_CreateWindow(
       "lost", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, NULL);
+
   if (window == NULL) {
     printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
     clean();
@@ -67,6 +62,8 @@ int game::run(uint w, uint h, double fps) {
 
     render();
   }
+
+  return clean();
 
   return clean();
 }
