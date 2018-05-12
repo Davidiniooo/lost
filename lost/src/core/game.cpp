@@ -13,9 +13,15 @@ game::~game() {}
 using namespace std::chrono_literals;
 
 int game::run(uint w, uint h, double fps) {
-  window         = NULL;
-  screen_surface = NULL;
-  renderer       = NULL;
+  window         = nullptr;
+  screen_surface = nullptr;
+  renderer       = nullptr;
+
+  if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+    printf("SDL could not be initialized! SDL_Error: %s\n", SDL_GetError());
+    clean();
+    return -1;
+  }
 
   current_world = new world();
   current_world->layers.push_back(new entity_layer());
@@ -23,7 +29,7 @@ int game::run(uint w, uint h, double fps) {
   window = SDL_CreateWindow(
       "lost", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, NULL);
 
-  if (window == NULL) {
+  if (window == nullptr) {
     printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
     clean();
     return -1;

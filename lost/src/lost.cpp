@@ -1,6 +1,9 @@
+#include "lost.h"
 #include "core/game.h"
 #include <iostream>
 #include <fstream>
+
+game * g;
 
 json json_from_file(const char *path_from_data) {
   std::ifstream ifs(path_from_data);
@@ -11,6 +14,6 @@ json json_from_file(const char *path_from_data) {
 }
 
 int main(int argc, char **argv) {
-  game *g = new game();
+  g = new game();
   return g->run(960, 540, 60);
 }

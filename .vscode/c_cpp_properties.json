@@ -4,13 +4,14 @@
             "name": "Win32",
             "browse": {
                 "path": [
-                    "${workspaceFolder}",
+                    "${workspaceFolder}/lost/src",
                     "${workspaceFolder}/lost/include"
                 ],
                 "limitSymbolsToIncludedHeaders": true
             },
             "includePath": [
-                "${workspaceFolder}"
+                "${workspaceFolder}/lost/src",
+                "${workspaceFolder}/lost/include"
             ],
             "defines": [
                 "_DEBUG",

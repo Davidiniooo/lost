@@ -23,3 +23,5 @@ using json = nlohmann::json;
   virtual int render()          = 0;
 
 json json_from_file(const char *path_from_data);
+
+extern class game * g;
