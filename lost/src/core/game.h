@@ -1,10 +1,11 @@
 #pragma once
 
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_image.h"
 #include "lost.h"
 
 class world;
+struct SDL_Window;
+struct SDL_Surface;
+struct SDL_Renderer;
 
 class game {
 public:

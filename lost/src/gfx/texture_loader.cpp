@@ -18,7 +18,7 @@ SDL_Texture *get_texture(std::string path, SDL_Renderer *r) {
   if (texture_exists(path, &i)) {
     return loaded_textures[i].texture;
   } else {
-    SDL_Surface *tmp_surface = IMG_Load(path.c_str());
+    SDL_Surface *tmp_surface = IMG_Load(("textures/" + path).c_str());
     SDL_Texture *tmp_texture = SDL_CreateTextureFromSurface(r, tmp_surface);
     SDL_FreeSurface(tmp_surface);
     loaded_textures.push_back({path, tmp_texture});

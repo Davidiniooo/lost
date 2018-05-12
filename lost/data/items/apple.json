@@ -1,5 +1,6 @@
 {
   "name": "Apple",
   "rarity": 0,
-  "item_type": 2
+  "item_type": 2,
+  "texture": "items/apple.png"
 }

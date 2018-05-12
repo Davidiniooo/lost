@@ -5,6 +5,8 @@
 #include "worlds/world.h"
 #include <chrono>
 #include <fstream>
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
 
 game::game() : running(true) {}
 
@@ -23,6 +25,8 @@ int game::run(uint w, uint h, double fps) {
     return -1;
   }
 
+  IMG_Init(IMG_INIT_PNG);
+
   current_world = new world();
   current_world->layers.push_back(new entity_layer());
 
@@ -37,6 +41,21 @@ int game::run(uint w, uint h, double fps) {
   screen_surface = SDL_GetWindowSurface(window);
 
   renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+  // T E S T I N G   A R E A
+
+  item apple = item(json_from_file("items/apple.json"));
+
+  SDL_SetRenderDrawColor(renderer, 0xff, 0xff, 0xff, 0xff);
+
+  SDL_RenderClear(renderer);
+
+  SDL_Rect dst = {0, 0, 64, 64};
+  SDL_RenderCopy(renderer, apple.texture, NULL, &dst);
+
+  SDL_RenderPresent(renderer);
+
+  // T E S T I N G   A R E A
 
   using clock = std::chrono::high_resolution_clock;
 

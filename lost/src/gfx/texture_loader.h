@@ -8,4 +8,4 @@ struct texture_item {
   SDL_Texture *texture;
 };
 
-SDL_Texture *get_texture(const char *path, SDL_Renderer *r);
+SDL_Texture *get_texture(std::string path, SDL_Renderer *r);

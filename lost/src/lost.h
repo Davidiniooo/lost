@@ -22,6 +22,6 @@ using json = nlohmann::json;
   virtual int update(double dt) = 0;                                           \
   virtual int render()          = 0;
 
-json json_from_file(const char *path_from_data);
+json json_from_file(std::string path_from_data);
 
-extern class game * g;
+extern class game * global_game;

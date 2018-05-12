@@ -3,10 +3,10 @@
 #include <iostream>
 #include <fstream>
 
-game * g;
+game * global_game;
 
-json json_from_file(const char *path_from_data) {
-  std::ifstream ifs(path_from_data);
+json json_from_file(std::string path_from_data) {
+  std::ifstream ifs(("data/" + path_from_data).c_str());
   json j;
   ifs >> j;
   ifs.close();
@@ -14,6 +14,6 @@ json json_from_file(const char *path_from_data) {
 }
 
 int main(int argc, char **argv) {
-  g = new game();
-  return g->run(960, 540, 60);
+  global_game = new game();
+  return global_game->run(960, 540, 60);
 }
