@@ -2,7 +2,7 @@
 
 #include "item.h"
 
-struct armor : public item {
+class armor : public item {
 public:
   armor(json j);
   armor() : item() {}

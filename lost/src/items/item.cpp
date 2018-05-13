@@ -1,6 +1,7 @@
 #include "item.h"
 #include "gfx/texture_loader.h"
 #include "core/game.h"
+#include <algorithm>
 
 item::item(json j) {
   name      = j["name"];
@@ -10,3 +11,10 @@ item::item(json j) {
 }
 
 item::~item() {}
+
+std::string get_item_path_from_name(std::string name) {
+  std::string tmp = name;
+  std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::tolower);
+  std::replace(tmp.begin(), tmp.end(), ' ', '_');
+  return "items/" + tmp + ".json";
+}

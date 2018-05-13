@@ -3,7 +3,7 @@
 #include "SFML/Graphics.hpp"
 #include "lost.h"
 
-struct item {
+class item {
 public:
   item() : name("none"), texture(nullptr), rarity(RARITY_COMMON), item_type(ITEM_TYPE_COLLECTABLE) {}
   item(json j);
@@ -16,3 +16,5 @@ public:
   e_rarity     rarity;
   e_item_type  item_type;
 };
+
+std::string get_item_path_from_name(std::string name);

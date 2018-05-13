@@ -2,7 +2,7 @@
 
 #include "item.h"
 
-struct weapon : public item {
+class weapon : public item {
 public:
   weapon(json j);
   weapon() : item() {}
