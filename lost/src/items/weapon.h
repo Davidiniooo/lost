@@ -2,9 +2,10 @@
 
 #include "item.h"
 
-class weapon : public item {
+struct weapon : public item {
 public:
   weapon(json j);
+  weapon() : item() {}
   ~weapon();
 
   e_weapon_type weapon_type;       // all

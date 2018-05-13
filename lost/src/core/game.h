@@ -1,11 +1,9 @@
 #pragma once
 
+#include "SFML/Graphics.hpp"
 #include "lost.h"
 
 class world;
-struct SDL_Window;
-struct SDL_Surface;
-struct SDL_Renderer;
 
 class game {
 public:
@@ -17,9 +15,7 @@ public:
 
   UPDATE_RENDER
 
-  bool          running;
-  SDL_Window *  window;
-  SDL_Surface * screen_surface;
-  SDL_Renderer *renderer;
-  world *       current_world;
+  bool             running;
+  sf::RenderWindow window;
+  world *          current_world;
 };

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "SDL2/SDL.h"
+#include "SFML/Graphics.hpp"
 #include "lost.h"
 
 struct texture_item {
   std::string path;
-  SDL_Texture *texture;
+  sf::Texture texture;
 };
 
-SDL_Texture *get_texture(std::string path, SDL_Renderer *r);
+sf::Texture *get_texture(std::string path);

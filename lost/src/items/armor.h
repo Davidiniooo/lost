@@ -2,9 +2,10 @@
 
 #include "item.h"
 
-class armor : public item {
+struct armor : public item {
 public:
   armor(json j);
+  armor() : item() {}
   ~armor();
 
   e_armor_type armor_type;
