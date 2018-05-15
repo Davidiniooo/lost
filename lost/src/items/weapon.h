@@ -4,6 +4,7 @@
 
 class weapon : public item {
 public:
+  weapon(json j, double dmg);
   weapon(json j);
   weapon() : item() {}
   ~weapon();

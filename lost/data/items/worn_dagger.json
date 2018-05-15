@@ -1,0 +1,9 @@
+{
+  "name": "Worn Dagger",
+  "rarity": 0,
+  "item_type": 3,
+  "texture": "items/worn_dagger.png",
+  "weapon_type": 2,
+  "attack_rate": 1,
+  "attack_range": 16
+}

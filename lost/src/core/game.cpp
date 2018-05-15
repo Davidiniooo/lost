@@ -5,10 +5,13 @@
 #include "worlds/world.h"
 #include <chrono>
 #include <fstream>
+#include "entities/player.h"
 
 game::game() : running(true), window(sf::VideoMode(1920, 1080), "lost"), current_world(new world()) {}
-item apple;
+
 game::~game() {}
+
+player p;
 
 using namespace std::chrono_literals;
 
@@ -17,7 +20,7 @@ int game::run(uint w, uint h, double fps) {
 
   // T E S T I N G   A R E A
 
-  apple = item(json_from_file("items/apple.json"));
+  p = player(json_from_file("player/player.json"));
 
   // T E S T I N G   A R E A
 
@@ -62,9 +65,7 @@ int game::update(double dt) {
 
 int game::render() {
   window.clear();
-  sf::Sprite spr(*apple.texture);
-  spr.setScale(4, 4);
-  window.draw(spr);
+  
   window.display();
 
   return 0;

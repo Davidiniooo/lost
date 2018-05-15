@@ -1,0 +1,14 @@
+{
+  "name": "Tevin",
+  "race": 0,
+  "gender": 0,
+  "inventory": {
+    "items": [
+      {
+        "name": "Apple",
+        "count": 2
+      }
+    ],
+    "primary": "Worn Dagger"
+  }
+}
