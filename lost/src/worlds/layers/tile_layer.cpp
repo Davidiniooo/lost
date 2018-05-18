@@ -1,5 +1,6 @@
 #include "tile_layer.h"
 #include "SFML/Graphics.hpp"
+#include "core/game.h"
 
 tile_layer::tile_layer() {}
 
@@ -10,6 +11,7 @@ int tile_layer::update(double dt) {
 }
 
 int tile_layer::render() {
+  g_game->window.draw(*this);
   return 0;
 }
 
