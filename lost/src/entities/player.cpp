@@ -6,7 +6,7 @@ player::player(json j) {
   name = j["name"];
   race = j["race"];
   gender = j["gender"];
-  inv = player_inventory(j);
+  inv = player_inventory(j["inventory"]);
 }
 
 player::~player() {}

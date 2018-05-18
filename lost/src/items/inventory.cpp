@@ -5,13 +5,13 @@ inventory::inventory() {
 }
 
 inventory::inventory(json j) {
-  std::vector<json> json_items = j["items"];
-  items                        = std::vector<inventory_item>();
-  
+  json json_items = j["items"];
+  items           = std::vector<inventory_item>();
+
   for (json _j : json_items) {
     inventory_item i = inventory_item(
         item(json_from_file(get_item_path_from_name(_j["name"]))), _j["count"]);
-    
+
     items.push_back(i);
   }
 }

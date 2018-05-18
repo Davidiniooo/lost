@@ -1,13 +1,17 @@
 #include "game.h"
 #include "entities/npc.h"
+#include "entities/player.h"
 #include "items/item.h"
 #include "worlds/layers/entity_layer.h"
 #include "worlds/world.h"
 #include <chrono>
 #include <fstream>
-#include "entities/player.h"
+#include <unordered_map>
+#include <list>
 
-game::game() : running(true), window(sf::VideoMode(1920, 1080), "lost"), current_world(new world()) {}
+game::game()
+    : running(true), window(sf::VideoMode(1920, 1080), "lost"),
+      current_world(new world()) {}
 
 game::~game() {}
 
@@ -18,9 +22,20 @@ using namespace std::chrono_literals;
 int game::run(uint w, uint h, double fps) {
   current_world->layers.push_back(new entity_layer());
 
+  std::unordered_map<int, bool> keys;
+  std::list<int> changed_keys;
+
   // T E S T I N G   A R E A
 
   p = player(json_from_file("player/player.json"));
+  std::cout << p.name << std::endl
+            << p.race << std::endl
+            << p.gender << std::endl
+            << p.inv.items.size() << std::endl
+            << p.inv.items[0].i.name << p.inv.items[0].count << std::endl
+            << p.inv.primary.name << std::endl;
+
+  std::flush(std::cout);
 
   // T E S T I N G   A R E A
 
@@ -40,8 +55,20 @@ int game::run(uint w, uint h, double fps) {
 
     while (window.pollEvent(e)) {
       switch (e.type) {
-      case sf::Event::Closed:
+      case sf::Event::EventType::Closed:
         running = false;
+        break;
+      case sf::Event::EventType::KeyPressed:
+        if (keys.count(e.key.code) == 0) {
+          keys[e.key.code] = true;
+          changed_keys.push_back(e.key.code);
+        }
+        break;
+      case sf::Event::EventType::KeyReleased:
+        if (keys.count(e.key.code) == 1) {
+          keys.erase(e.key.code);
+          changed_keys.push_back(e.key.code);
+        }
         break;
       }
     }
@@ -65,7 +92,7 @@ int game::update(double dt) {
 
 int game::render() {
   window.clear();
-  
+
   window.display();
 
   return 0;

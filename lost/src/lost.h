@@ -24,4 +24,4 @@ using json = nlohmann::json;
 
 json json_from_file(std::string path_from_data);
 
-extern class game * global_game;
+extern class game * g_game;

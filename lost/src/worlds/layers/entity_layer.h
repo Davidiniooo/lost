@@ -1,6 +1,7 @@
 #pragma once
 
 #include "layer.h"
+#include "SFML/Graphics.hpp"
 
 class entity;
 

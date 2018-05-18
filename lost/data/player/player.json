@@ -9,6 +9,9 @@
         "count": 2
       }
     ],
-    "primary": "Worn Dagger"
+    "primary": {
+      "name": "Worn Dagger",
+      "dps": 7
+    }
   }
 }
