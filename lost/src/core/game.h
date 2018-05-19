@@ -3,23 +3,27 @@
 #include "SFML/Graphics.hpp"
 #include "lost.h"
 
-namespace lost {
-  
+namespace lost::worlds {
 class world;
+}
+
+namespace lost::core {
+
+using namespace lost;
 
 class game {
 public:
-  game();
+  game(uint w, uint h);
   ~game();
 
-  int run(uint w, uint h, double fps);
+  int run(double fps);
   int clean();
 
   UPDATE_RENDER
 
-  bool             running;
-  sf::RenderWindow window;
-  world *          current_world;
+  bool                 running;
+  sf::RenderWindow     window;
+  lost::worlds::world *current_world;
 };
 
-} // namespace lost
+} // namespace lost::core

@@ -4,7 +4,9 @@
 
 namespace lost::worlds {
 
-namespace layers {}
+namespace layers {
+  class layer;
+}
 
 class world {
 public:
@@ -13,7 +15,7 @@ public:
 
   UPDATE_RENDER
 
-  std::vector<class layers::layer *> m_layers;
+  std::vector<layers::layer *> m_layers;
 };
 
 } // namespace lost

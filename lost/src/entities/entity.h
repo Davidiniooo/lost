@@ -8,7 +8,10 @@ using namespace lost;
 
 class entity {
 public:
-  V_UPDATE_RENDER
+  entity();
+  ~entity();
+  
+  UPDATE_RENDER
 };
 
 } // namespace lost::entities

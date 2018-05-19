@@ -16,7 +16,7 @@
             },
             "args": [
                 "-c",
-                "mingw32-make"
+                "make"
             ]
         },
         {
@@ -34,7 +34,7 @@
             },
             "args": [
                 "-c",
-                "mingw32-make run"
+                "'make run'"
             ]
         },
         {
@@ -48,7 +48,7 @@
             },
             "args": [
                 "-c",
-                "mingw32-make clean"
+                "'make clean'"
             ]
         }
     ]

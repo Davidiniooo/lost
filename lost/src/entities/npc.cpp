@@ -11,6 +11,8 @@ npc::npc(json j) {
 npc::~npc() {}
 
 int npc::update(double dt) {
+  double _dt = dt;
+  _dt += 1;
   return 0;
 }
 

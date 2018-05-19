@@ -63,7 +63,9 @@
     "locale": "cpp",
     "set": "cpp",
     "xlocbuf": "cpp",
-    "xlocmes": "cpp"
+    "xlocmes": "cpp",
+    "*.tcc": "cpp",
+    "string_view": "cpp"
   },
   "C_Cpp.errorSquiggles": "Disabled"
 }

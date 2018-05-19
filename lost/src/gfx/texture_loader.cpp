@@ -5,7 +5,7 @@ namespace lost::gfx {
 std::vector<texture_item> loaded_textures = std::vector<texture_item>();
 
 bool texture_exists(std::string path, int *i) {
-  for (int _i = 0; _i < loaded_textures.size(); ++_i) {
+  for (uint _i = 0; _i < loaded_textures.size(); ++_i) {
     if ((*(loaded_textures.begin() + _i)).path.compare(path) == 0) {
       *i = _i;
       return true;

@@ -5,6 +5,8 @@
 
 namespace lost::gfx {
 
+using namespace lost;
+
 struct texture_item {
   std::string path;
   sf::Texture texture;

@@ -9,7 +9,7 @@ item::item(json j) {
   name      = (std::string)j["name"];
   rarity    = j["rarity"];
   item_type = j["item_type"];
-  texture   = get_texture(j["texture"]);
+  texture   = gfx::get_texture(j["texture"]);
 }
 
 item::~item() {}

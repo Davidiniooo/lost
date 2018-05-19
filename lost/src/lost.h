@@ -9,6 +9,10 @@
 #include <string>
 #include <vector>
 
+namespace lost::core {
+  class game;
+}
+
 namespace lost {
 
 using json = nlohmann::json;
@@ -26,6 +30,6 @@ json json_from_file(std::string path_from_data);
 typedef unsigned int  uint;
 typedef unsigned char byte;
 
-extern class game *g_game;
+extern core::game *g_game;
 
 }

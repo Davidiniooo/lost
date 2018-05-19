@@ -1,12 +1,12 @@
 CC		:= g++
-C_FLAGS := -std=c++17 -Wall -Wextra
+C_FLAGS := -std=c++17 -Wall -Wextra -g
 
 BIN		:= bin
-SRC		:= src
-INCLUDE	:= include
+SRC		:= src/*.cpp src/core/*.cpp src/entities/*.cpp src/gfx/*.cpp src/items/*.cpp src/worlds/*.cpp src/worlds/layers/*.cpp
+INCLUDE	:= include -Isrc
 LIB		:= lib
 
-LIBRARIES	:= -lsfml-graphics-d -lsfml-window-d -lsfml-system-d
+LIBRARIES	:= -lsfml-graphics -lsfml-window -lsfml-system
 
 ifeq ($(OS),Windows_NT)
 EXECUTABLE	:= main.exe
@@ -22,5 +22,5 @@ clean:
 run: all
 	./$(BIN)/$(EXECUTABLE)
 
-$(BIN)/$(EXECUTABLE): $(SRC)/**/*.cpp $(SRC)/**/*.h
-	$(CC) $(C_FLAGS) -I$(INCLUDE) -I$(SRC) -L$(LIB) $^ -o $@ $(LIBRARIES)
+$(BIN)/$(EXECUTABLE): $(SRC)
+	$(CC) $(C_FLAGS) -I$(INCLUDE) -L$(LIB) $^ -o $@ $(LIBRARIES)
