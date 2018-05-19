@@ -6,8 +6,8 @@ using namespace lost;
 
 void load_key_binds(json j);
 
-extern int KEY_RIGHT = -1;
-extern int KEY_LEFT  = -1;
-extern int KEY_JUMP  = -1;
+extern int KEY_RIGHT;
+extern int KEY_LEFT;
+extern int KEY_JUMP;
 
 } // namespace lost::input

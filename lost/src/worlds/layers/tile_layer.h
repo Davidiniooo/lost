@@ -12,6 +12,8 @@ public:
 
   UPDATE_RENDER
 
+  bool m_visible;
+
   bool load(
       sf::Texture *ts,
       sf::Vector2u tile_size,

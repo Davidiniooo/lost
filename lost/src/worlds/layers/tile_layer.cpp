@@ -4,7 +4,7 @@
 
 namespace lost::worlds::layers {
 
-tile_layer::tile_layer() {}
+tile_layer::tile_layer() : m_visible(true) {}
 
 tile_layer::~tile_layer() {}
 
@@ -13,7 +13,9 @@ int tile_layer::update(double dt) {
 }
 
 int tile_layer::render() {
-  g_game->m_window.draw(*this);
+  if (m_visible) {
+    g_game->m_window.draw(*this);
+  }
   return 0;
 }
 
@@ -64,7 +66,7 @@ bool tile_layer::load(
   return true;
 }
 
-void tile_layer::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+void tile_layer::draw(sf::RenderTarget &target, sf::RenderStates states) const {
   // apply the transform
   states.transform *= getTransform();
 
@@ -75,4 +77,4 @@ void tile_layer::draw(sf::RenderTarget& target, sf::RenderStates states) const {
   target.draw(m_vertices, states);
 }
 
-}
+} // namespace lost::worlds::layers
