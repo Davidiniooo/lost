@@ -4,6 +4,7 @@
 #include <unordered_map>
 
 namespace lost::input {
+
 class input_manager {
 public:
   input_manager();
