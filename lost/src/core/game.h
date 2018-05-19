@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SFML/Graphics.hpp"
+#include "input/input_manager.h"
 #include "lost.h"
 
 namespace lost::worlds {
@@ -21,9 +22,10 @@ public:
 
   UPDATE_RENDER
 
-  bool                 running;
-  sf::RenderWindow     window;
-  lost::worlds::world *current_world;
+  bool                       m_running;
+  sf::RenderWindow           m_window;
+  lost::worlds::world *      m_current_world;
+  lost::input::input_manager m_input_manager;
 };
 
 } // namespace lost::core

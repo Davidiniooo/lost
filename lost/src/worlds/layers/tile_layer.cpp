@@ -13,7 +13,7 @@ int tile_layer::update(double dt) {
 }
 
 int tile_layer::render() {
-  g_game->window.draw(*this);
+  g_game->m_window.draw(*this);
   return 0;
 }
 
