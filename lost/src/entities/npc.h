@@ -3,6 +3,8 @@
 #include "entity.h"
 #include "lost.h"
 
+namespace lost::entities {
+
 class npc : public entity {
 public:
   npc(json j);
@@ -10,7 +12,9 @@ public:
 
   UPDATE_RENDER
 
-  std::string name;
-  e_race      race;
-  e_gender    gender;
+  std::string    name;
+  data::e_race   race;
+  data::e_gender gender;
 };
+
+} // namespace lost::entities

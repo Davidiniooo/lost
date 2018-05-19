@@ -1,7 +1,9 @@
 #include "npc.h"
 
+namespace lost::entities {
+
 npc::npc(json j) {
-  name   = j["name"];
+  name   = (std::string)j["name"];
   race   = j["race"];
   gender = j["gender"];
 }
@@ -15,3 +17,5 @@ int npc::update(double dt) {
 int npc::render() {
   return 0;
 }
+
+} // namespace lost::entities

@@ -1,5 +1,7 @@
 #include "player_inventory.h"
 
+namespace lost::items {
+
 player_inventory::player_inventory() {}
 
 player_inventory::player_inventory(json j) : inventory(j) {
@@ -27,3 +29,5 @@ player_inventory::player_inventory(json j) : inventory(j) {
 }
 
 player_inventory::~player_inventory() {}
+
+} // namespace lost::items

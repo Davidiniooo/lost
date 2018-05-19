@@ -2,6 +2,8 @@
 
 #include "lost.h"
 
+namespace lost::worlds::layers {
+
 class layer {
 public:
   layer() {}
@@ -9,3 +11,5 @@ public:
 
   V_UPDATE_RENDER
 };
+
+} // namespace lost

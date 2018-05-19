@@ -2,14 +2,18 @@
 
 #include "lost.h"
 
-class layer;
+namespace lost::worlds {
+
+namespace layers {}
 
 class world {
 public:
   world();
   ~world();
 
-	UPDATE_RENDER
+  UPDATE_RENDER
 
-	std::vector<layer*> layers;
+  std::vector<class layers::layer *> m_layers;
 };
+
+} // namespace lost

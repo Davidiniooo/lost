@@ -4,6 +4,8 @@
 #include "items/player_inventory.h"
 #include "lost.h"
 
+namespace lost::entities {
+
 class player : entity {
 public:
   player();
@@ -12,8 +14,10 @@ public:
 
   UPDATE_RENDER
 
-  std::string      name;
-  e_race           race;
-  e_gender         gender;
-  player_inventory inv;
+  std::string             name;
+  data::e_race            race;
+  data::e_gender          gender;
+  items::player_inventory inv;
 };
+
+} // namespace lost::entities

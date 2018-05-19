@@ -9,8 +9,7 @@
 #include <string>
 #include <vector>
 
-typedef unsigned int  uint;
-typedef unsigned char byte;
+namespace lost {
 
 using json = nlohmann::json;
 
@@ -24,4 +23,9 @@ using json = nlohmann::json;
 
 json json_from_file(std::string path_from_data);
 
-extern class game * g_game;
+typedef unsigned int  uint;
+typedef unsigned char byte;
+
+extern class game *g_game;
+
+}

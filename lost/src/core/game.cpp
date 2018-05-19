@@ -3,11 +3,15 @@
 #include "entities/player.h"
 #include "items/item.h"
 #include "worlds/layers/entity_layer.h"
+#include "worlds/layers/tile_layer.h"
 #include "worlds/world.h"
 #include <chrono>
 #include <fstream>
 #include <unordered_map>
 #include <list>
+#include "gfx/texture_loader.h"
+
+namespace lost {
 
 game::game()
     : running(true), window(sf::VideoMode(1920, 1080), "lost"),
@@ -16,6 +20,7 @@ game::game()
 game::~game() {}
 
 player p;
+tile_layer t;
 
 using namespace std::chrono_literals;
 
@@ -36,6 +41,16 @@ int game::run(uint w, uint h, double fps) {
             << p.inv.primary.name << std::endl;
 
   std::flush(std::cout);
+
+  const int tiles[] = {
+    34, 2, 1, 2, 36,
+    3, 4, 3, 4, 3,
+    5, 6, 5, 6, 5,
+    7, 8, 7, 8, 7,
+    9, 0, 9, 0, 9
+  };
+
+  t.load(get_texture("tilesets/dirt.png"), sf::Vector2u(16, 16), tiles, 5, 5);
 
   // T E S T I N G   A R E A
 
@@ -92,7 +107,7 @@ int game::update(double dt) {
 
 int game::render() {
   window.clear();
-
+  window.draw(t);
   window.display();
 
   return 0;
@@ -101,4 +116,6 @@ int game::render() {
 int game::clean() {
   window.close();
   return 0;
+}
+
 }

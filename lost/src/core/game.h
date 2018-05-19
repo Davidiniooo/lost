@@ -3,6 +3,8 @@
 #include "SFML/Graphics.hpp"
 #include "lost.h"
 
+namespace lost {
+  
 class world;
 
 class game {
@@ -19,3 +21,5 @@ public:
   sf::RenderWindow window;
   world *          current_world;
 };
+
+} // namespace lost

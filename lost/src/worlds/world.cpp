@@ -1,19 +1,23 @@
 #include "world.h"
 #include "layers/layer.h"
 
+namespace lost::worlds {
+
 world::world() {
-  layers = std::vector<layer*>();
+  m_layers = std::vector<layers::layer *>();
 }
 
 world::~world() {}
 
 int world::update(double dt) {
-  for (layer *l : layers) {
+  for (layers::layer *l : m_layers) {
     l->update(dt);
-	}
-	return 0;
+  }
+  return 0;
 }
 
 int world::render() {
-	return 0;
+  return 0;
 }
+
+} // namespace lost

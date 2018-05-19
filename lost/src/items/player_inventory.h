@@ -4,6 +4,8 @@
 #include "inventory.h"
 #include "weapon.h"
 
+namespace lost::items {
+
 class player_inventory : public inventory {
 public:
   player_inventory();
@@ -19,3 +21,5 @@ public:
   weapon secondary;
   weapon ternary;
 };
+
+} // namespace lost::items

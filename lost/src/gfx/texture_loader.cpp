@@ -1,5 +1,7 @@
 #include "texture_loader.h"
 
+namespace lost::gfx {
+
 std::vector<texture_item> loaded_textures = std::vector<texture_item>();
 
 bool texture_exists(std::string path, int *i) {
@@ -25,3 +27,5 @@ sf::Texture *get_texture(std::string path) {
     return &((*(loaded_textures.end() - 1)).texture);
   }
 }
+
+} // namespace lost::gfx

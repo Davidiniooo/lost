@@ -1,12 +1,14 @@
 #include "inventory.h"
 
+namespace lost::items {
+
 inventory::inventory() {
   items = std::vector<inventory_item>();
 }
 
 inventory::inventory(json j) {
   json json_items = j["items"];
-  items           = std::vector<inventory_item>();
+  items                 = std::vector<inventory_item>();
 
   for (json _j : json_items) {
     inventory_item i = inventory_item(
@@ -17,3 +19,5 @@ inventory::inventory(json j) {
 }
 
 inventory::~inventory() {}
+
+} // namespace lost::items

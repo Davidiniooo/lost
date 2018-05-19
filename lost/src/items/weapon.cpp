@@ -1,5 +1,7 @@
 #include "weapon.h"
 
+namespace lost::items {
+
 weapon::weapon(json j) : item(j) {
   weapon_type = j["weapon_type"];
   attack_rate = j["attack_rate"];
@@ -35,3 +37,5 @@ weapon::weapon(json j, double dps) : item(j) {
 }
 
 weapon::~weapon() {}
+
+} // namespace lost::items

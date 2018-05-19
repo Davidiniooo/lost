@@ -2,6 +2,8 @@
 
 #include "item.h"
 
+namespace lost::items {
+
 struct inventory_item {
   inventory_item() {}
   inventory_item(item it, uint c) : i(it), count(c) {}
@@ -17,3 +19,5 @@ public:
 
   std::vector<inventory_item> items;
 };
+
+}

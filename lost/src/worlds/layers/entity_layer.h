@@ -3,7 +3,9 @@
 #include "layer.h"
 #include "SFML/Graphics.hpp"
 
-class entity;
+namespace lost::worlds::layers {
+
+class lost::entities::entity;
 
 class entity_layer : public layer {
 public:
@@ -12,8 +14,10 @@ public:
 
   UPDATE_RENDER
 
-  void add_entity(entity* e);
-  void remove_entity(entity* e);
+  void add_entity(lost::entities::entity* e);
+  void remove_entity(lost::entities::entity* e);
 
-  std::vector<entity*> entities;
+  std::vector<lost::entities::entity*> entities;
 };
+
+}

@@ -2,6 +2,8 @@
 #include "SFML/Graphics.hpp"
 #include "core/game.h"
 
+namespace lost::worlds::layers {
+
 tile_layer::tile_layer() {}
 
 tile_layer::~tile_layer() {}
@@ -62,7 +64,7 @@ bool tile_layer::load(
   return true;
 }
 
-void tile_layer::draw(sf::RenderTarget& target, sf::RenderStates states) {
+void tile_layer::draw(sf::RenderTarget& target, sf::RenderStates states) const {
   // apply the transform
   states.transform *= getTransform();
 
@@ -71,4 +73,6 @@ void tile_layer::draw(sf::RenderTarget& target, sf::RenderStates states) {
 
   // draw the vertex array
   target.draw(m_vertices, states);
+}
+
 }
