@@ -4,8 +4,8 @@
 #include "entities/npc.h"
 #include "entities/player.h"
 #include "gfx/texture_loader.h"
-#include "imgui/imgui-SFML.h"
-#include "imgui/imgui.h"
+// #include "imgui/imgui-SFML.h"
+// #include "imgui/imgui.h"
 #include "input/input_manager.h"
 #include "input/keys.h"
 #include "items/item.h"
@@ -21,13 +21,19 @@ namespace lost::core {
 game::game(uint w, uint h)
     : m_running(true), m_window(sf::VideoMode(w, h), "lost"),
       m_current_world(new worlds::world()) {
-  ImGui::SFML::Init(m_window);
+  //ImGui::SFML::Init(m_window);
 }
 
 game::~game() {}
 
 entities::player      p;
 entities::game_entity ge;
+
+void gui() {
+  // ImGui::Begin("blablabla");
+  // ImGui::Button("Look at this pretty button");
+  // ImGui::End();
+}
 
 int game::run(double fps) {
   m_current_world->m_layers.push_back(new worlds::layers::entity_layer());
@@ -58,12 +64,12 @@ int game::run(double fps) {
 
   sf::Clock clock;
   sf::Time  accumulator = sf::Time::Zero;
-  sf::Time  ups         = sf::seconds(1.f / 60.f);
+  sf::Time  ups         = sf::seconds(1.f / fps);
   while (m_running) {
     sf::Event e;
 
     while (m_window.pollEvent(e)) {
-      ImGui::SFML::ProcessEvent(e);
+      // ImGui::SFML::ProcessEvent(e);
       switch (e.type) {
       case sf::Event::EventType::Closed:
         m_running = false;
@@ -79,11 +85,14 @@ int game::run(double fps) {
       }
     }
 
+    //ImGui::SFML::Update(m_window, clock.getElapsedTime());
+
     while (accumulator >= ups) {
       accumulator -= ups;
+      update(1.0 / fps);
     }
 
-    update((double)clock.getElapsedTime().asSeconds());
+    // gui();
 
     render();
 
@@ -93,17 +102,10 @@ int game::run(double fps) {
   return clean();
 }
 
-void gui() {
-  ImGui::Begin("blablabla");
-  ImGui::Button("Look at this pretty button");
-  ImGui::End();
-}
-
 int game::update(double dt) {
   m_current_world->update(dt);
   ge.player_update(dt);
-  ImGui::SFML::Update(m_window, sf::seconds(dt));
-  gui();
+
   return 0;
 }
 
@@ -111,7 +113,7 @@ int game::render() {
   m_window.clear();
   m_window.draw(t);
   ge.player_render();
-  ImGui::SFML::Render(m_window);
+  // ImGui::SFML::Render(m_window);
   m_window.display();
 
   return 0;
@@ -119,7 +121,7 @@ int game::render() {
 
 int game::clean() {
   m_window.close();
-  ImGui::SFML::Shutdown();
+  //ImGui::SFML::Shutdown();
   return 0;
 }
 

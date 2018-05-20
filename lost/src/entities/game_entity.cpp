@@ -24,12 +24,12 @@ int game_entity::player_update(double dt) {
   int r = g_game->m_input_manager.key_down(input::KEY_RIGHT) ? 1 : 0;
   int l = g_game->m_input_manager.key_down(input::KEY_LEFT) ? 1 : 0;
 
-  m_velocity.m_x = (r - l) * 0.2;
+  m_velocity.m_x = (r - l) * 0.8;
 
-  math::collision::entity_tilemap(*this, g_game->t);
+  //math::collision::entity_tilemap(*this, g_game->t);
 
-  m_position.m_x += m_velocity.m_x * dt;
-  m_position.m_y += m_velocity.m_y * dt;
+  m_position.m_x += m_velocity.m_x;
+  m_position.m_y += m_velocity.m_y;
 
   return 0;
 }
