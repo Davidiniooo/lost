@@ -14,8 +14,6 @@ player::player(json j) {
 player::~player() {}
 
 int player::update(double dt) {
-  double _dt = dt;
-  _dt += 1;
   return 0;
 }
 

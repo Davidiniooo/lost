@@ -1,13 +1,17 @@
 #include "game.h"
+#include "entities/entity.h"
+#include "entities/game_entity.h"
 #include "entities/npc.h"
 #include "entities/player.h"
 #include "gfx/texture_loader.h"
+#include "imgui/imgui-SFML.h"
+#include "imgui/imgui.h"
 #include "input/input_manager.h"
+#include "input/keys.h"
 #include "items/item.h"
 #include "worlds/layers/entity_layer.h"
 #include "worlds/layers/tile_layer.h"
 #include "worlds/world.h"
-#include <chrono>
 #include <fstream>
 #include <list>
 #include <unordered_map>
@@ -16,17 +20,19 @@ namespace lost::core {
 
 game::game(uint w, uint h)
     : m_running(true), m_window(sf::VideoMode(w, h), "lost"),
-      m_current_world(new worlds::world()) {}
+      m_current_world(new worlds::world()) {
+  ImGui::SFML::Init(m_window);
+}
 
 game::~game() {}
 
-entities::player           p;
-worlds::layers::tile_layer t;
-
-using namespace std::chrono_literals;
+entities::player      p;
+entities::game_entity ge;
 
 int game::run(double fps) {
   m_current_world->m_layers.push_back(new worlds::layers::entity_layer());
+
+  input::load_key_binds(json_from_file("../key_binds.json"));
 
   // T E S T I N G   A R E A
 
@@ -39,29 +45,25 @@ int game::run(double fps) {
             << p.inv.items[0].count << std::endl
             << p.inv.primary.name << std::endl;
 
-  const int tiles[] = {34, 2, 1, 2, 36, 3, 4, 3, 4, 3, 5, 6, 5,
-                       6,  5, 7, 8, 7,  8, 7, 9, 0, 9, 0, 9};
+  ge = entities::game_entity(
+      &p, math::vec2(24, 24), math::vec2(), math::vec2(8, 16));
+
+  const int tiles[] = {1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0,
+                       0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1};
 
   t.load(
       gfx::get_texture("tilesets/dirt.png"), sf::Vector2u(16, 16), tiles, 5, 5);
 
   // T E S T I N G   A R E A
 
-  using clock = std::chrono::high_resolution_clock;
-
-  std::chrono::nanoseconds lag(0ns);
-  std::chrono::nanoseconds timestep((long long)((1 / fps) * 1000000ll));
-
-  auto time_start = clock::now();
-
+  sf::Clock clock;
+  sf::Time  accumulator = sf::Time::Zero;
+  sf::Time  ups         = sf::seconds(1.f / 60.f);
   while (m_running) {
-    auto dt    = clock::now() - time_start;
-    time_start = clock::now();
-    lag += std::chrono::duration_cast<std::chrono::nanoseconds>(dt);
-
     sf::Event e;
 
     while (m_window.pollEvent(e)) {
+      ImGui::SFML::ProcessEvent(e);
       switch (e.type) {
       case sf::Event::EventType::Closed:
         m_running = false;
@@ -77,26 +79,39 @@ int game::run(double fps) {
       }
     }
 
-    while (lag >= timestep) {
-      lag -= timestep;
-
-      update((double)timestep.count() / 1000000.0);
+    while (accumulator >= ups) {
+      accumulator -= ups;
     }
 
+    update((double)clock.getElapsedTime().asSeconds());
+
     render();
+
+    accumulator += clock.restart();
   }
 
   return clean();
 }
 
+void gui() {
+  ImGui::Begin("blablabla");
+  ImGui::Button("Look at this pretty button");
+  ImGui::End();
+}
+
 int game::update(double dt) {
   m_current_world->update(dt);
+  ge.player_update(dt);
+  ImGui::SFML::Update(m_window, sf::seconds(dt));
+  gui();
   return 0;
 }
 
 int game::render() {
   m_window.clear();
   m_window.draw(t);
+  ge.player_render();
+  ImGui::SFML::Render(m_window);
   m_window.display();
 
   return 0;
@@ -104,6 +119,7 @@ int game::render() {
 
 int game::clean() {
   m_window.close();
+  ImGui::SFML::Shutdown();
   return 0;
 }
 

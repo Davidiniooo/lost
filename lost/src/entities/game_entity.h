@@ -16,6 +16,9 @@ public:
 
   UPDATE_RENDER
 
+  int player_update(double dt);
+  int player_render();
+
   entity *   m_entity;
   math::vec2 m_position;
   math::vec2 m_velocity;

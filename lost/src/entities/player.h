@@ -6,7 +6,7 @@
 
 namespace lost::entities {
 
-class player : entity {
+class player : public entity {
 public:
   player();
   player(json j);
