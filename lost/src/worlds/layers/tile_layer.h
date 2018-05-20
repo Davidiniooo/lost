@@ -21,10 +21,17 @@ public:
       uint         width,
       uint         height);
 
+  sf::Vector2u m_tile_size;
+
+  int get_at(int x, int y);
+  int get_at_coord(int x, int y);
+
 private:
   void            draw(sf::RenderTarget &target, sf::RenderStates states) const;
   sf::VertexArray m_vertices;
   sf::Texture *   m_tileset;
+  uint            m_width;
+  uint            m_height;
 };
 
 } // namespace lost::worlds::layers

@@ -25,6 +25,12 @@ bool tile_layer::load(
     const int *  tiles,
     uint         width,
     uint         height) {
+
+  m_width  = width;
+  m_height = height;
+
+  m_tile_size = tile_size;
+
   m_tileset = ts;
 
   m_vertices.setPrimitiveType(sf::Quads);
@@ -64,6 +70,15 @@ bool tile_layer::load(
     }
   }
   return true;
+}
+
+int tile_layer::get_at(int x, int y) {
+  return y * m_width + x;
+}
+
+int tile_layer::get_at_coord(int x, int y) {
+  return (int)floor((double)y / (double)m_tile_size.y) * m_width
+         + (int)floor((double)x / (double)m_tile_size.x);
 }
 
 void tile_layer::draw(sf::RenderTarget &target, sf::RenderStates states) const {
