@@ -81,6 +81,14 @@ int tile_layer::get_at_coord(int x, int y) {
          + (int)floor((double)x / (double)m_tile_size.x);
 }
 
+int tile_layer::x_coord_to_index(double x) {
+  return (int)floor(x / m_tile_size.x);
+}
+
+int tile_layer::y_coord_to_index(double y) {
+  return (int)floor(y / m_tile_size.y);
+}
+
 void tile_layer::draw(sf::RenderTarget &target, sf::RenderStates states) const {
   // apply the transform
   states.transform *= getTransform();

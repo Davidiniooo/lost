@@ -12,6 +12,5 @@ namespace lost::math::collision {
 
 using namespace lost;
 
-void entity_tilemap(
-    lost::entities::game_entity &e, lost::worlds::layers::tile_layer &t);
+void entity_tilemap(entities::game_entity &e, worlds::layers::tile_layer &t);
 } // namespace lost::math::collision

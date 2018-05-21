@@ -25,12 +25,12 @@ int game_entity::player_update(double dt) {
   int r = g_game->m_input_manager.key_down(input::KEY_RIGHT) ? 1 : 0;
   int l = g_game->m_input_manager.key_down(input::KEY_LEFT) ? 1 : 0;
 
-  m_velocity.m_x = (r - l) * 0.8;
+  m_velocity.x = (r - l) * 0.8;
 
   math::collision::entity_tilemap(*this, g_game->t);
 
-  m_position.m_x += m_velocity.m_x;
-  m_position.m_y += m_velocity.m_y;
+  m_position.x += m_velocity.x;
+  m_position.y += m_velocity.y;
 
   return 0;
 }
@@ -38,12 +38,12 @@ int game_entity::player_update(double dt) {
 int game_entity::player_render() {
   sf::Sprite s;
   s.setTexture(*gfx::get_texture("1x2.png"));
-  s.setOrigin(m_half_sizes.m_x, m_half_sizes.m_y);
-  s.setPosition(m_position.m_x, m_position.m_y);
+  s.setOrigin(m_half_sizes.x, m_half_sizes.y);
+  s.setPosition(m_position.x, m_position.y);
   g_game->m_window.draw(s);
-  sf::RectangleShape rect(sf::Vector2f(m_half_sizes.m_x * 2, m_half_sizes.m_y * 2));
+  sf::RectangleShape rect(sf::Vector2f(m_half_sizes.x * 2, m_half_sizes.y * 2));
   rect.setPosition(
-      m_position.m_x - m_half_sizes.m_x, m_position.m_y - m_half_sizes.m_y);
+      m_position.x - m_half_sizes.x, m_position.y - m_half_sizes.y);
   g_game->m_window.draw(rect);
   return 0;
 }

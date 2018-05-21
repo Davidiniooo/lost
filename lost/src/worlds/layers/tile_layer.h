@@ -25,6 +25,8 @@ public:
 
   int get_at(int x, int y);
   int get_at_coord(int x, int y);
+  int x_coord_to_index(double x);
+  int y_coord_to_index(double y);
 
 private:
   void            draw(sf::RenderTarget &target, sf::RenderStates states) const;
