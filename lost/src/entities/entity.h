@@ -10,8 +10,9 @@ class entity {
 public:
   entity();
   ~entity();
-  
-  UPDATE_RENDER
+
+  std::string update;
+  std::string render;
 };
 
 } // namespace lost::entities

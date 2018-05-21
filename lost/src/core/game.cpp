@@ -52,7 +52,7 @@ int game::run(double fps) {
             << p.inv.primary.name << std::endl;
 
   ge = entities::game_entity(
-      &p, math::vec2(24, 24), math::vec2(), math::vec2(8, 16));
+      &p, math::vec2(24, 32), math::vec2(), math::vec2(8, 16));
 
   const int tiles[] = {1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0,
                        0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1};

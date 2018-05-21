@@ -12,8 +12,6 @@ public:
   player(json j);
   ~player();
 
-  UPDATE_RENDER
-
   std::string             name;
   data::e_race            race;
   data::e_gender          gender;

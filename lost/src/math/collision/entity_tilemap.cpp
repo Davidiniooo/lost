@@ -12,8 +12,8 @@ void entity_tilemap(
   math::rect e_rect(
       e.m_position.m_x - e.m_half_sizes.m_x,
       e.m_position.m_y - e.m_half_sizes.m_y,
-      e.m_half_sizes.m_x * 2,
-      e.m_half_sizes.m_y * 2);
+      e.m_half_sizes.m_x * 2.0,
+      e.m_half_sizes.m_y * 2.0);
 
   if (e.m_velocity.m_x != 0) {
     double vhsp =

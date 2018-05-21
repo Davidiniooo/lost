@@ -4,7 +4,7 @@
 #include "layer.h"
 
 namespace lost::entities {
-class entity;
+class game_entity;
 }
 
 namespace lost::worlds::layers {
@@ -16,10 +16,10 @@ public:
 
   UPDATE_RENDER
 
-  void add_entity(lost::entities::entity *e);
-  void remove_entity(lost::entities::entity *e);
+  void add_entity(lost::entities::game_entity *e);
+  void remove_entity(lost::entities::game_entity *e);
 
-  std::vector<lost::entities::entity *> m_entities;
+  std::vector<lost::entities::game_entity *> m_entities;
 };
 
 } // namespace lost::worlds::layers

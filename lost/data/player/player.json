@@ -13,5 +13,7 @@
       "name": "Worn Dagger",
       "dps": 7
     }
-  }
+  },
+  "update": ".",
+  "render": "."
 }

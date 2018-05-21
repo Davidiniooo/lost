@@ -9,16 +9,10 @@ player::player(json j) {
   race   = j["race"];
   gender = j["gender"];
   inv    = items::player_inventory(j["inventory"]);
+  update = j["update"];
+  render = j["render"];
 }
 
 player::~player() {}
-
-int player::update(double dt) {
-  return 0;
-}
-
-int player::render() {
-  return 0;
-}
 
 } // namespace lost::entities
