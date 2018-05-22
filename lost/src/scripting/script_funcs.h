@@ -7,16 +7,14 @@
 namespace lost::scripting::funcs {
   using namespace lost;
 
-  int get_tile_layer(lua_State* L) {
-    std::string name = lua_tostring(L, 1);
+  int get_tile_layer(lua_State* L);
 
-    for (uint i = 0; i < g_game->m_current_world->m_layers.size(); ++i) {
-      if (g_game->m_current_world->m_layers[i]->name.compare(name) == 0) {
-        lua_pushlightuserdata(L, (worlds::layers::tile_layer*)(g_game->m_current_world->m_layers[i]));
-        return 1;
-      }
-    }
+  int tile_layer_get_at(lua_State* L);
 
-    return 0;
-  }
+  int tile_layer_get_at_pixel(lua_State* L);
+
+  int tile_layer_get_cell_x_at_pixel(lua_State* L);
+  int tile_layer_get_cell_y_at_pixel(lua_State* L);
+
+  int call_script(lua_State* L);
 }

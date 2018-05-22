@@ -4,7 +4,6 @@
 #include "gfx/texture_loader.h"
 #include "input/input_manager.h"
 #include "input/keys.h"
-#include "math/collision/entity_tilemap.h"
 #include "math/lerp.h"
 #include "scripting/execute_script.h"
 
@@ -26,8 +25,6 @@ int game_entity::player_update(double dt) {
   int l = g_game->m_input_manager.key_down(input::KEY_LEFT) ? 1 : 0;
 
   m_velocity.x = (r - l) * 0.8;
-
-  math::collision::entity_tilemap(*this, g_game->t);
 
   m_position.x += m_velocity.x;
   m_position.y += m_velocity.y;

@@ -12,10 +12,24 @@ int execute_script(std::string path) {
   // Make standard libraries available in the Lua object
   luaL_openlibs(state);
 
+  lua_register(state, "get_tile_layer", funcs::get_tile_layer);
+  lua_register(state, "tile_layer_get_at", funcs::tile_layer_get_at);
+  lua_register(
+      state, "tile_layer_get_at_pixel", funcs::tile_layer_get_at_pixel);
+  lua_register(
+      state,
+      "tile_layer_get_cell_x_at_pixel",
+      funcs::tile_layer_get_cell_x_at_pixel);
+  lua_register(
+      state,
+      "tile_layer_get_cell_x_at_pixel",
+      funcs::tile_layer_get_cell_x_at_pixel);
+  lua_register(state, "call_script", funcs::call_script);
+
   int result;
 
   // Load the program; this supports both source code and bytecode files.
-  result = luaL_loadfile(state, path.c_str());
+  result = luaL_loadfile(state, ("scripts/" + path + ".script").c_str());
 
   if (result != LUA_OK) {
     return -1;

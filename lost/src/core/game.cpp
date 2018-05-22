@@ -15,6 +15,7 @@
 #include <fstream>
 #include <list>
 #include <unordered_map>
+#include "scripting/execute_script.h"
 
 namespace lost::core {
 
@@ -50,6 +51,8 @@ int game::run(double fps) {
             << p.inv.items[0].i.name << std::endl
             << p.inv.items[0].count << std::endl
             << p.inv.primary.name << std::endl;
+
+  scripting::execute_script("player_update");
 
   ge = entities::game_entity(
       &p, math::vec2(24, 32), math::vec2(), math::vec2(8, 16));

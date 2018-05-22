@@ -1,0 +1,98 @@
+-- ~ T I L E S E T   C O L L I S I O N ~
+local bbox_side_h = nil;
+local bbox_side_v = nil;
+local tile_layer = get_tile_layer("Collision");
+
+if get_hsp() != 0 then
+	local vhsp = get_hsp() > 0 ? math.ceil(get_hsp()) : math.floor(get_hsp())
+	
+	if vhsp > 0 then bbox_side_h = bbox_right; else bbox_side_h = bbox_left; end
+	
+	local col = false;
+	
+	local _x = math.floor((bbox_side_h + vhsp) / tile_width);
+	
+	for local i = math.floor(bbox_top / tile_height), math.floor(bbox_bottom / tile_height) do
+		local c = tile_layer_get_at_pixel(tile_layer, bbox_side_h + vhsp, i * tile_height);
+		
+		if c == 1 then
+			col = true;
+		end
+	end
+
+	if col then
+		if hsp > 0 then
+			set_x(tile_layer_get_cell_x_at_pixel(tile_layer, bbox_side_h + vhsp, bbox_top + bbox_height / 2) * 16 - sprite_xoffset/2 - 1)
+		else
+			set_x(tile_layer_get_cell_x_at_pixel(tilemap, bbox_side_h + vhsp, bbox_top + bbox_height / 2) * 16 + 16 - sprite_xoffset/2 + 1)
+    end
+		
+		set_hsp(0);
+  end
+end
+
+-- if get_vsp() != 0 then
+-- 	local vvsp = get_vsp() > 0 ? ceil(vsp) : floor(vsp)
+	
+-- 	if vsp > 0 then bbox_side_v = bbox_bottom; else bbox_side_v = bbox_top; end
+	
+-- 	local col = false;
+	
+-- 	var _y = floor((bbox_side_v + vvsp) / tile_height);
+	
+-- 	for (var i = floor(bbox_left / tile_height); i <= floor(bbox_right / tile_height); ++i) {
+-- 		var c = tilemap_get(tilemap, i, _y);
+		
+-- 		if (c == 1) {
+-- 			col = true;
+-- 		}
+-- 	}
+	
+-- 	if (col) {
+			
+-- 		if vsp > 0
+-- 			y = tilemap_get_cell_y_at_pixel(tilemap, bbox_left, bbox_side_v + vvsp) * 16 - sprite_yoffset
+-- 		else
+-- 			y = tilemap_get_cell_y_at_pixel(tilemap, bbox_left, bbox_side_v + vvsp) * 16 + 16 + sprite_yoffset
+		
+-- 		vsp = 0;
+-- 	}
+-- }
+
+-- if vsp != 0 {
+-- 	var vvsp = vsp > 0 ? ceil(vsp) : floor(vsp)
+	
+-- 	if vsp > 0 bbox_side_v = bbox_bottom; else bbox_side_v = bbox_top;
+	
+-- 	if (tilemap_get_at_pixel(tilemap, bbox_left, bbox_side_v + vvsp) == 2) or 
+-- 		(tilemap_get_at_pixel(tilemap, bbox_right, bbox_side_v + vvsp) == 2) {
+			
+-- 		if vsp > 0 and 
+-- 			tilemap_get_cell_y_at_pixel(tilemap, bbox_left, bbox_side_v + vvsp) >= bbox_bottom {
+-- 				draw_rectangle (tilemap_get_cell_x_at_pixel(tilemap, bbox_left, bbox_side_v + vvsp), tilemap_get_cell_y_at_pixel(tilemap, bbox_left, bbox_side_v + vvsp), tilemap_get_cell_x_at_pixel(tilemap, bbox_left, bbox_side_v + vvsp) + 15, tilemap_get_cell_y_at_pixel(tilemap, bbox_left, bbox_side_v + vvsp) + 15, false)
+-- 			y = tilemap_get_cell_y_at_pixel(tilemap, bbox_left, bbox_side_v + vvsp) * 16 - sprite_yoffset
+		
+-- 			vsp = 0;
+-- 		}
+-- 	}
+-- }
+
+-- // ~ O B J E C T   C O L L I S I O N ~
+
+-- if (place_meeting(x+hsp,y,o_collide)) {
+-- 	while(!place_meeting(x+sign(hsp),y,o_collide)) {
+-- 		x += sign(hsp);
+-- 	}
+-- 	hsp = 0;
+-- }
+
+
+-- if (place_meeting(x,y+vsp,o_collide)) {
+-- 	while(!place_meeting(x,y+sign(vsp),o_collide)) {
+-- 		y += sign(vsp);
+-- 	}
+-- 	vsp = 0;
+-- }
+
+set_x(get_x() + get_hsp());
+set_y(get_y() + get_vsp());
