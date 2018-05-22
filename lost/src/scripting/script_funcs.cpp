@@ -47,7 +47,7 @@ int tile_layer_get_cell_x_at_pixel(lua_State *L) {
 
   double x = lua_tonumber(L, 2);
 
-  lua_pushnumber(L, tl->x_coord_to_index(x) * tl->m_tile_sizes.x);
+  lua_pushnumber(L, tl->x_coord_to_index(x) * tl->m_tile_size.x);
 
   return 1;
 }
@@ -58,7 +58,7 @@ int tile_layer_get_cell_y_at_pixel(lua_State *L) {
 
   double y = lua_tonumber(L, 2);
 
-  lua_pushnumber(L, tl->y_coord_to_index(y) * tl->m_tile_sizes.y);
+  lua_pushnumber(L, tl->y_coord_to_index(y) * tl->m_tile_size.y);
 
   return 1;
 }
@@ -67,13 +67,6 @@ int call_script(lua_State *L) {
   int result;
 
   std::string s = lua_tostring(L, 1);
-
-  int top = lua_gettop(L);
-
-  for (int i = 1; i <= top; ++i) {
-    lua_pushvalue(L, i);
-    lua_setglobal(L, ("argument" + i));
-  }
 
   result = luaL_dofile(L, ("scripts/" + s + ".script").c_str());
 
