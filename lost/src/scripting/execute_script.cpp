@@ -2,6 +2,8 @@
 
 #include <lua5.3/lua.hpp>
 
+#include "script_funcs.h"
+
 namespace lost::scripting {
 
 int execute_script(std::string path) {

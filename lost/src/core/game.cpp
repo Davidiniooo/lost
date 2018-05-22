@@ -20,7 +20,7 @@ namespace lost::core {
 
 game::game(uint w, uint h)
     : m_running(true), m_window(sf::VideoMode(w, h), "lost"),
-      m_current_world(new worlds::world()) {
+      m_current_world(new worlds::world()), t("tl") {
   //ImGui::SFML::Init(m_window);
 }
 
@@ -36,7 +36,7 @@ void gui() {
 }
 
 int game::run(double fps) {
-  m_current_world->m_layers.push_back(new worlds::layers::entity_layer());
+  m_current_world->m_layers.push_back(new worlds::layers::entity_layer("el"));
 
   input::load_key_binds(json_from_file("../key_binds.json"));
 

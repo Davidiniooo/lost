@@ -6,8 +6,10 @@ namespace lost::worlds::layers {
 
 class layer {
 public:
-  layer() {}
+  layer(std::string n) : name(n) {}
   ~layer() {}
+
+  std::string name;
 
   V_UPDATE_RENDER
 };

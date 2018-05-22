@@ -4,7 +4,7 @@
 
 namespace lost::worlds::layers {
 
-tile_layer::tile_layer() : m_visible(true) {}
+tile_layer::tile_layer(std::string n) : layer(n), m_visible(true) {}
 
 tile_layer::~tile_layer() {}
 

@@ -4,7 +4,7 @@
 
 namespace lost::worlds::layers {
 
-entity_layer::entity_layer() {
+entity_layer::entity_layer(std::string n) : layer(n) {
   m_entities = std::vector<lost::entities::game_entity *>();
 }
 

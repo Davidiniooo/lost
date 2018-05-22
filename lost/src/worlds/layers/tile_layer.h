@@ -7,7 +7,7 @@ namespace lost::worlds::layers {
 
 class tile_layer : public layer, public sf::Drawable, public sf::Transformable {
 public:
-  tile_layer();
+  tile_layer(std::string n);
   ~tile_layer();
 
   UPDATE_RENDER

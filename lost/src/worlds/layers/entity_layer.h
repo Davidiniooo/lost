@@ -11,7 +11,7 @@ namespace lost::worlds::layers {
 
 class entity_layer : public layer {
 public:
-  entity_layer();
+  entity_layer(std::string n);
   ~entity_layer();
 
   UPDATE_RENDER
