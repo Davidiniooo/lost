@@ -9,4 +9,9 @@ namespace lost::scripting::funcs {
   get_set(y)
   get_set(hsp)
   get_set(vsp)
+  
+  int hitbox_right(lua_State* L);
+  int hitbox_left(lua_State* L);
+  int hitbox_top(lua_State* L);
+  int hitbox_bottom(lua_State* L);
 }

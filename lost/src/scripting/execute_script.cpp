@@ -64,6 +64,10 @@ void register_obj_funcs(lua_State *state) {
   lua_register(state, "set_hsp", funcs::set_hsp);
   lua_register(state, "get_vsp", funcs::get_vsp);
   lua_register(state, "set_vsp", funcs::set_vsp);
+  lua_register(state, "hitbox_right", funcs::hitbox_right);
+  lua_register(state, "hitbox_left", funcs::hitbox_left);
+  lua_register(state, "hitbox_top", funcs::hitbox_top);
+  lua_register(state, "hitbox_bottom", funcs::hitbox_bottom);
 }
 
 int execute_script(std::string path, lost::entities::game_entity *e) {

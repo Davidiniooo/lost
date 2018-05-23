@@ -6,30 +6,40 @@ local bbox_side_h = nil;
 local bbox_side_v = nil;
 local tile_layer = get_tile_layer("Collision");
 
-if get_hsp() != 0 then
-	local vhsp = get_hsp() > 0 ? math.ceil(get_hsp()) : math.floor(get_hsp())
+if get_hsp() ~= 0 then
+	local vhsp = nil
+
+	if get_hsp() > 0 then
+		vhsp = math.ceil(get_hsp())
+	else
+		vhsp = math.floor(get_hsp())
+	end
 	
-	if vhsp > 0 then bbox_side_h = bbox_right; else bbox_side_h = bbox_left; end
+	if vhsp > 0 then 
+		bbox_side_h = hitbox_right()
+	else 
+		bbox_side_h = hitbox_left()
+	end
 	
 	local col = false;
 	
-	for local i = math.floor(bbox_top / tile_height), math.floor(bbox_bottom / tile_height) do
-		local c = tile_layer_get_at_pixel(tile_layer, bbox_side_h + vhsp, i * tile_height);
+	for local i = math.floor(hitbox_top() / tile_height), math.floor(hitbox_bottom() / tile_height) do
+	-- 	local c = tile_layer_get_at_pixel(tile_layer, bbox_side_h + vhsp, i * tile_height);
 		
-		if c == 1 then
-			col = true;
-		end
+	--  	if c == 1 then
+	--  		col = true;
+	--  	end
 	end
 
-	if col then
-		if hsp > 0 then
-			set_x(tile_layer_get_cell_x_at_pixel(tile_layer, bbox_side_h + vhsp, bbox_top + bbox_height / 2) * 16 - sprite_xoffset/2 - 1)
-		else
-			set_x(tile_layer_get_cell_x_at_pixel(tilemap, bbox_side_h + vhsp, bbox_top + bbox_height / 2) * 16 + 16 - sprite_xoffset/2 + 1)
-    end
+	-- if col then
+	--  	if hsp > 0 then
+	--  		set_x(tile_layer_get_cell_x_at_pixel(tile_layer, bbox_side_h + vhsp, bbox_top + bbox_height / 2) * 16 - sprite_xoffset/2 - 1)
+	--  	else
+	--  		set_x(tile_layer_get_cell_x_at_pixel(tilemap, bbox_side_h + vhsp, bbox_top + bbox_height / 2) * 16 + 16 - sprite_xoffset/2 + 1)
+  --   end
 		
-		set_hsp(0);
-  end
+	--  	set_hsp(0);
+  -- end
 end
 
 -- if get_vsp() != 0 then

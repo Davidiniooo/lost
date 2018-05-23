@@ -6,7 +6,8 @@ namespace lost::scripting::funcs {
 
 int get_x(lua_State *L) {
   lua_getglobal(L, "this");
-  lost::entities::game_entity *e = (lost::entities::game_entity*)lua_topointer(L, lua_gettop(L));
+  lost::entities::game_entity *e =
+      (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
 
   lua_pushnumber(L, e->m_position.x);
 
@@ -15,7 +16,8 @@ int get_x(lua_State *L) {
 
 int set_x(lua_State *L) {
   lua_getglobal(L, "this");
-  lost::entities::game_entity *e = (lost::entities::game_entity*)lua_topointer(L, lua_gettop(L));
+  lost::entities::game_entity *e =
+      (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
 
   e->m_position.x = lua_tonumber(L, 1);
 
@@ -24,7 +26,8 @@ int set_x(lua_State *L) {
 
 int get_y(lua_State *L) {
   lua_getglobal(L, "this");
-  lost::entities::game_entity *e = (lost::entities::game_entity*)lua_topointer(L, lua_gettop(L));
+  lost::entities::game_entity *e =
+      (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
 
   lua_pushnumber(L, e->m_position.y);
 
@@ -33,7 +36,8 @@ int get_y(lua_State *L) {
 
 int set_y(lua_State *L) {
   lua_getglobal(L, "this");
-  lost::entities::game_entity *e = (lost::entities::game_entity*)lua_topointer(L, lua_gettop(L));
+  lost::entities::game_entity *e =
+      (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
 
   e->m_position.y = lua_tonumber(L, 1);
 
@@ -42,7 +46,8 @@ int set_y(lua_State *L) {
 
 int get_hsp(lua_State *L) {
   lua_getglobal(L, "this");
-  lost::entities::game_entity *e = (lost::entities::game_entity*)lua_topointer(L, lua_gettop(L));
+  lost::entities::game_entity *e =
+      (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
 
   lua_pushnumber(L, e->m_velocity.x);
 
@@ -51,7 +56,8 @@ int get_hsp(lua_State *L) {
 
 int set_hsp(lua_State *L) {
   lua_getglobal(L, "this");
-  lost::entities::game_entity *e = (lost::entities::game_entity*)lua_topointer(L, lua_gettop(L));
+  lost::entities::game_entity *e =
+      (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
 
   e->m_velocity.x = lua_tonumber(L, 1);
 
@@ -60,7 +66,8 @@ int set_hsp(lua_State *L) {
 
 int get_vsp(lua_State *L) {
   lua_getglobal(L, "this");
-  lost::entities::game_entity *e = (lost::entities::game_entity*)lua_topointer(L, lua_gettop(L));
+  lost::entities::game_entity *e =
+      (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
 
   lua_pushnumber(L, e->m_velocity.y);
 
@@ -69,11 +76,52 @@ int get_vsp(lua_State *L) {
 
 int set_vsp(lua_State *L) {
   lua_getglobal(L, "this");
-  lost::entities::game_entity *e = (lost::entities::game_entity*)lua_topointer(L, lua_gettop(L));
+  lost::entities::game_entity *e =
+      (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
 
   e->m_velocity.y = lua_tonumber(L, 1);
 
   return 0;
+}
+
+int hitbox_right(lua_State *L) {
+  lua_getglobal(L, "this");
+  lost::entities::game_entity *e =
+      (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
+
+  lua_pushnumber(L, e->m_position.x + e->m_half_sizes.x);
+
+  return 1;
+}
+
+int hitbox_left(lua_State *L) {
+  lua_getglobal(L, "this");
+  lost::entities::game_entity *e =
+      (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
+
+  lua_pushnumber(L, e->m_position.x - e->m_half_sizes.x);
+
+  return 1;
+}
+
+int hitbox_top(lua_State *L) {
+  lua_getglobal(L, "this");
+  lost::entities::game_entity *e =
+      (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
+
+  lua_pushnumber(L, e->m_position.y - e->m_half_sizes.y);
+
+  return 1;
+}
+
+int hitbox_bottom(lua_State *L) {
+  lua_getglobal(L, "this");
+  lost::entities::game_entity *e =
+      (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
+
+  lua_pushnumber(L, e->m_position.y + e->m_half_sizes.y);
+
+  return 1;
 }
 
 } // namespace lost::scripting::funcs
