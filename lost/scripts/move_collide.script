@@ -10,8 +10,6 @@ if get_hsp() != 0 then
 	
 	local col = false;
 	
-	local _x = math.floor((bbox_side_h + vhsp) / tile_width);
-	
 	for local i = math.floor(bbox_top / tile_height), math.floor(bbox_bottom / tile_height) do
 		local c = tile_layer_get_at_pixel(tile_layer, bbox_side_h + vhsp, i * tile_height);
 		

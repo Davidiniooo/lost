@@ -52,10 +52,13 @@ int game::run(double fps) {
             << p.inv.items[0].count << std::endl
             << p.inv.primary.name << std::endl;
 
-  scripting::execute_script("player_update");
-
   ge = entities::game_entity(
       &p, math::vec2(24, 32), math::vec2(), math::vec2(8, 16));
+
+
+  scripting::execute_script("player_update", &ge);
+
+  printf("%f\n", ge.m_position.x);
 
   const int tiles[] = {1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0,
                        0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1};
