@@ -1,4 +1,7 @@
 -- ~ T I L E S E T   C O L L I S I O N ~
+
+print(0)
+
 local bbox_side_h = nil;
 local bbox_side_v = nil;
 local tile_layer = get_tile_layer("Collision");

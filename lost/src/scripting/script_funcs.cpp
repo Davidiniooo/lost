@@ -1,5 +1,8 @@
 #include "scripting/script_funcs.h"
+#include "input/input_manager.h"
+#include "input/keys.h"
 #include "scripting/execute_script.h"
+#include "core/game.h"
 
 namespace lost::scripting::funcs {
 int get_tile_layer(lua_State *L) {
@@ -64,11 +67,9 @@ int tile_layer_get_cell_y_at_pixel(lua_State *L) {
 }
 
 int call_script(lua_State *L) {
-  int result;
-
   std::string s = lua_tostring(L, 1);
 
-  result = luaL_dofile(L, ("scripts/" + s + ".script").c_str());
+  int result = luaL_dofile(L, ("scripts/" + s + ".script").c_str());
 
   if (result != LUA_OK) {
     return -1;
@@ -76,4 +77,37 @@ int call_script(lua_State *L) {
 
   return result;
 }
+
+int key_down(lua_State *L) {
+  std::string s = lua_tostring(L, 1);
+
+  lua_pushboolean(L, g_game->m_input_manager.key_down(input::keys[s]));
+
+  return 1;
+}
+
+int key_pressed(lua_State *L) {
+  std::string s = lua_tostring(L, 1);
+
+  lua_pushboolean(L, g_game->m_input_manager.key_pressed(input::keys[s]));
+
+  return 1;
+}
+
+int key_up(lua_State *L) {
+  std::string s = lua_tostring(L, 1);
+
+  lua_pushboolean(L, g_game->m_input_manager.key_up(input::keys[s]));
+
+  return 1;
+}
+
+int key_released(lua_State *L) {
+  std::string s = lua_tostring(L, 1);
+
+  lua_pushboolean(L, g_game->m_input_manager.key_released(input::keys[s]));
+
+  return 1;
+}
+
 } // namespace lost::scripting::funcs

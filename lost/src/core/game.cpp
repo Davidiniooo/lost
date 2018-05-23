@@ -53,10 +53,7 @@ int game::run(double fps) {
             << p.inv.primary.name << std::endl;
 
   ge = entities::game_entity(
-      &p, math::vec2(24, 32), math::vec2(), math::vec2(8, 16));
-
-
-  scripting::execute_script("player_update", &ge);
+      &p, math::vec2(24, 38), math::vec2(), math::vec2(8, 16));
 
   printf("%f\n", ge.m_position.x);
 
@@ -110,7 +107,7 @@ int game::run(double fps) {
 
 int game::update(double dt) {
   m_current_world->update(dt);
-  ge.player_update(dt);
+  ge.update(dt);
 
   return 0;
 }

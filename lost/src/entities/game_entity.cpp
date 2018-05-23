@@ -13,16 +13,16 @@ game_entity::game_entity(entity *e, math::vec2 p, math::vec2 v, math::vec2 s)
     : m_entity(e), m_position(p), m_velocity(v), m_half_sizes(s) {}
 
 int game_entity::update(double dt) {
-  return scripting::execute_script(m_entity->update);
+  return scripting::execute_script(m_entity->update, this);
 }
 
 int game_entity::render() {
-  return scripting::execute_script(m_entity->render);
+  return scripting::execute_script(m_entity->render, this);
 }
 
 int game_entity::player_update(double dt) {
-  int r = g_game->m_input_manager.key_down(input::KEY_RIGHT) ? 1 : 0;
-  int l = g_game->m_input_manager.key_down(input::KEY_LEFT) ? 1 : 0;
+  int r = g_game->m_input_manager.key_down(input::keys["right"]) ? 1 : 0;
+  int l = g_game->m_input_manager.key_down(input::keys["left"]) ? 1 : 0;
 
   m_velocity.x = (r - l) * 0.8;
 

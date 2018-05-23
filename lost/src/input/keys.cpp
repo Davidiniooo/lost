@@ -2,13 +2,13 @@
 
 namespace lost::input {
 
-int KEY_RIGHT;
-int KEY_LEFT;
-int KEY_JUMP;
+std::unordered_map<std::string, int> keys;
 
 void load_key_binds(json j) {
-  KEY_RIGHT = j["right"];
-  KEY_LEFT  = j["left"];
-  KEY_JUMP  = j["jump"];
+  keys = std::unordered_map<std::string, int>();
+
+  for (json::iterator it = j.begin(); it != j.end(); ++it) {
+    keys[it.key()] = it.value();
+  }
 }
 } // namespace lost::input

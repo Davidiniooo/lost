@@ -25,6 +25,10 @@ void register_funcs(lua_State *state) {
       "tile_layer_get_cell_x_at_pixel",
       funcs::tile_layer_get_cell_x_at_pixel);
   lua_register(state, "call_script", funcs::call_script);
+  lua_register(state, "key_down", funcs::key_down);
+  lua_register(state, "key_pressed", funcs::key_pressed);
+  lua_register(state, "key_up", funcs::key_up);
+  lua_register(state, "key_released", funcs::key_released);
 }
 
 int execute_script(std::string path) {
@@ -62,7 +66,7 @@ void register_obj_funcs(lua_State *state) {
   lua_register(state, "set_vsp", funcs::set_vsp);
 }
 
-int execute_script(std::string path, lost::entities::game_entity* e) {
+int execute_script(std::string path, lost::entities::game_entity *e) {
   lua_State *state = luaL_newstate();
 
   register_funcs(state);

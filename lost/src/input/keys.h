@@ -1,4 +1,6 @@
 #include "lost.h"
+#include <unordered_map>
+#include <string>
 
 namespace lost::input {
 
@@ -6,8 +8,6 @@ using namespace lost;
 
 void load_key_binds(json j);
 
-extern int KEY_RIGHT;
-extern int KEY_LEFT;
-extern int KEY_JUMP;
+extern std::unordered_map<std::string, int> keys;
 
 } // namespace lost::input
