@@ -28,6 +28,8 @@ public:
   int x_coord_to_index(double x);
   int y_coord_to_index(double y);
 
+  const int * m_raw_tiles;
+
 private:
   void            draw(sf::RenderTarget &target, sf::RenderStates states) const;
   sf::VertexArray m_vertices;

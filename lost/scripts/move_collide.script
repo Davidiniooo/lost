@@ -1,21 +1,26 @@
 -- ~ T I L E S E T   C O L L I S I O N ~
 
-print(0)
+print(get_x(), get_y(), get_hsp(), get_vsp())
 
-local bbox_side_h = nil;
-local bbox_side_v = nil;
-local tile_layer = get_tile_layer("Collision");
+local bbox_side_h = nil
+local bbox_side_v = nil
+local tile_layer = get_tile_layer("collision")
+local tile_width = tile_layer_get_tile_width(tile_layer)
+local tile_height = tile_layer_get_tile_height(tile_layer)
 
 if get_hsp() ~= 0 then
+	print(1)
 	local vhsp = nil
 
 	if get_hsp() > 0 then
+		print(2)
 		vhsp = math.ceil(get_hsp())
 	else
 		vhsp = math.floor(get_hsp())
 	end
 	
 	if vhsp > 0 then 
+		print(3)
 		bbox_side_h = hitbox_right()
 	else 
 		bbox_side_h = hitbox_left()
@@ -23,23 +28,36 @@ if get_hsp() ~= 0 then
 	
 	local col = false;
 	
-	for local i = math.floor(hitbox_top() / tile_height), math.floor(hitbox_bottom() / tile_height) do
-	-- 	local c = tile_layer_get_at_pixel(tile_layer, bbox_side_h + vhsp, i * tile_height);
+	for i = math.floor(hitbox_top() / tile_height), math.floor(hitbox_bottom() / tile_height) do
+	 	local c = tile_layer_get_at(
+			tile_layer, 
+			math.floor((bbox_side_h + vhsp) / tile_width), 
+			i
+		);
+
+		print(4, math.floor((bbox_side_h + vhsp) / tile_width), i, c)
 		
-	--  	if c == 1 then
-	--  		col = true;
-	--  	end
+			if c == 1 then
+				print(5)
+	  		col = true;
+				break
+	  	end
 	end
 
-	-- if col then
-	--  	if hsp > 0 then
-	--  		set_x(tile_layer_get_cell_x_at_pixel(tile_layer, bbox_side_h + vhsp, bbox_top + bbox_height / 2) * 16 - sprite_xoffset/2 - 1)
-	--  	else
-	--  		set_x(tile_layer_get_cell_x_at_pixel(tilemap, bbox_side_h + vhsp, bbox_top + bbox_height / 2) * 16 + 16 - sprite_xoffset/2 + 1)
-  --   end
+	if col then
+	 	if hsp > 0 then
+	 		set_x(tile_layer_get_cell_x_at_pixel(tile_layer, bbox_side_h + vhsp, bbox_top + bbox_height / 2) * 16 - sprite_xoffset/2 - 1)
+			print(6, tile_layer_get_cell_x_at_pixel(tile_layer, bbox_side_h + vhsp, bbox_top + bbox_height / 2) * 16 - sprite_xoffset/2 - 1)
+	 	else
+	 		set_x(tile_layer_get_cell_x_at_pixel(tilemap, bbox_side_h + vhsp, bbox_top + bbox_height / 2) * 16 + 16 - sprite_xoffset/2 + 1)
+			print(6, tile_layer_get_cell_x_at_pixel(tilemap, bbox_side_h + vhsp, bbox_top + bbox_height / 2) * 16 + 16 - sprite_xoffset/2 + 1)
+    end
 		
-	--  	set_hsp(0);
-  -- end
+	 	set_hsp(0);
+  end
+
+	print(get_x(), get_y(), get_hsp(), get_vsp())
+	print(7)
 end
 
 -- if get_vsp() != 0 then

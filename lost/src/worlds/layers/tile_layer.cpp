@@ -26,6 +26,8 @@ bool tile_layer::load(
     uint         width,
     uint         height) {
 
+  m_raw_tiles = tiles;
+
   m_width  = width;
   m_height = height;
 
@@ -73,12 +75,18 @@ bool tile_layer::load(
 }
 
 int tile_layer::get_at(int x, int y) {
-  return y * m_width + x;
+  if (x * y < 0 || x * y >= m_width * m_height)
+    return 0;
+  
+  return m_raw_tiles[y * m_width + x];
 }
 
 int tile_layer::get_at_coord(int x, int y) {
-  return (int)floor((double)y / (double)m_tile_size.y) * m_width
-         + (int)floor((double)x / (double)m_tile_size.x);
+  if (x * y < 0 || x * y >= m_width * m_height)
+    return 0;
+
+  return m_raw_tiles[(int)floor((double)y / (double)m_tile_size.y) * m_width
+         + (int)floor((double)x / (double)m_tile_size.x)];
 }
 
 int tile_layer::x_coord_to_index(double x) {

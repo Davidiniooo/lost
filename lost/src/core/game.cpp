@@ -19,9 +19,11 @@
 
 namespace lost::core {
 
+worlds::layers::tile_layer t("collision");
+
 game::game(uint w, uint h)
     : m_running(true), m_window(sf::VideoMode(w, h), "lost"),
-      m_current_world(new worlds::world()), t("tl") {
+      m_current_world(new worlds::world()) {
   //ImGui::SFML::Init(m_window);
 }
 
@@ -62,6 +64,8 @@ int game::run(double fps) {
 
   t.load(
       gfx::get_texture("tilesets/dirt.png"), sf::Vector2u(16, 16), tiles, 5, 5);
+
+  m_current_world->m_layers.push_back(&t);
 
   // T E S T I N G   A R E A
 

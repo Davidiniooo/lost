@@ -24,6 +24,8 @@ void register_funcs(lua_State *state) {
       state,
       "tile_layer_get_cell_x_at_pixel",
       funcs::tile_layer_get_cell_x_at_pixel);
+  lua_register(state, "tile_layer_get_tile_width", funcs::tile_layer_get_tile_width);
+  lua_register(state, "tile_layer_get_tile_height", funcs::tile_layer_get_tile_height);
   lua_register(state, "call_script", funcs::call_script);
   lua_register(state, "key_down", funcs::key_down);
   lua_register(state, "key_pressed", funcs::key_pressed);

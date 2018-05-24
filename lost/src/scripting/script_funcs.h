@@ -16,6 +16,9 @@ namespace lost::scripting::funcs {
   int tile_layer_get_cell_x_at_pixel(lua_State* L);
   int tile_layer_get_cell_y_at_pixel(lua_State* L);
 
+  int tile_layer_get_tile_width(lua_State* L);
+  int tile_layer_get_tile_height(lua_State* L);
+
   int call_script(lua_State* L);
 
   int key_down(lua_State* L);

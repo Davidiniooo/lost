@@ -1,8 +1,8 @@
 #include "scripting/script_funcs.h"
+#include "core/game.h"
 #include "input/input_manager.h"
 #include "input/keys.h"
 #include "scripting/execute_script.h"
-#include "core/game.h"
 
 namespace lost::scripting::funcs {
 int get_tile_layer(lua_State *L) {
@@ -106,6 +106,24 @@ int key_released(lua_State *L) {
   std::string s = lua_tostring(L, 1);
 
   lua_pushboolean(L, g_game->m_input_manager.key_released(input::keys[s]));
+
+  return 1;
+}
+
+int tile_layer_get_tile_width(lua_State *L) {
+  worlds::layers::tile_layer *tl =
+      (worlds::layers::tile_layer *)lua_touserdata(L, 1);
+
+  lua_pushnumber(L, tl->m_tile_size.x);
+
+  return 1;
+}
+
+int tile_layer_get_tile_height(lua_State *L) {
+  worlds::layers::tile_layer *tl =
+      (worlds::layers::tile_layer *)lua_touserdata(L, 1);
+
+  lua_pushnumber(L, tl->m_tile_size.y);
 
   return 1;
 }
