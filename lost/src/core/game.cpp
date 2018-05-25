@@ -24,6 +24,8 @@ worlds::layers::tile_layer t("collision");
 game::game(uint w, uint h)
     : m_running(true), m_window(sf::VideoMode(w, h), "lost"),
       m_current_world(new worlds::world()) {
+  sf::View view(sf::FloatRect(0, 0, 192, 108));
+  m_window.setView(view);
   //ImGui::SFML::Init(m_window);
 }
 

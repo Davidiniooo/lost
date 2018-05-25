@@ -69,13 +69,9 @@ int tile_layer_get_cell_y_at_pixel(lua_State *L) {
 int call_script(lua_State *L) {
   std::string s = lua_tostring(L, 1);
 
-  int result = luaL_dofile(L, ("scripts/" + s + ".script").c_str());
+  luaL_dofile(L, ("scripts/" + s + ".lua").c_str());
 
-  if (result != LUA_OK) {
-    return -1;
-  }
-
-  return result;
+  return 0;
 }
 
 int key_down(lua_State *L) {

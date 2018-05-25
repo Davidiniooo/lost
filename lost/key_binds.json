@@ -1,5 +1,7 @@
 {
   "right": 3,
   "left": 0,
+  "up": 22,
+  "down": 18,
   "jump": 57
 }

@@ -1,9 +1,0 @@
-local r = key_down("right") and 1 or 0
-local l = key_down("left") and 1 or 0
-
-set_hsp((1-l) * 0.8)
-
-call_script("move_collide")
-
-set_x(get_x() + get_hsp())
-set_y(get_y() + get_vsp())

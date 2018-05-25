@@ -41,7 +41,7 @@ int execute_script(std::string path) {
   int result;
 
   // Load the program; this supports both source code and bytecode files.
-  result = luaL_loadfile(state, ("scripts/" + path + ".script").c_str());
+  result = luaL_loadfile(state, ("scripts/" + path + ".lua").c_str());
 
   if (result != LUA_OK) {
     return -1;
@@ -85,7 +85,7 @@ int execute_script(std::string path, lost::entities::game_entity *e) {
   int result;
 
   // Load the program; this supports both source code and bytecode files.
-  result = luaL_loadfile(state, ("scripts/" + path + ".script").c_str());
+  result = luaL_loadfile(state, ("scripts/" + path + ".lua").c_str());
 
   if (result != LUA_OK) {
     return -1;
