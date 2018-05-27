@@ -9,13 +9,13 @@
 #include "input/input_manager.h"
 #include "input/keys.h"
 #include "items/item.h"
+#include "scripting/execute_script.h"
 #include "worlds/layers/entity_layer.h"
 #include "worlds/layers/tile_layer.h"
 #include "worlds/world.h"
 #include <fstream>
 #include <list>
 #include <unordered_map>
-#include "scripting/execute_script.h"
 
 namespace lost::core {
 
@@ -26,7 +26,7 @@ game::game(uint w, uint h)
       m_current_world(new worlds::world()) {
   sf::View view(sf::FloatRect(0, 0, 192, 108));
   m_window.setView(view);
-  //ImGui::SFML::Init(m_window);
+  // ImGui::SFML::Init(m_window);
 }
 
 game::~game() {}
@@ -57,7 +57,7 @@ int game::run(double fps) {
             << p.inv.primary.name << std::endl;
 
   ge = entities::game_entity(
-      &p, math::vec2(24, 38), math::vec2(), math::vec2(8, 16));
+      &p, math::vec2(24, 24), math::vec2(), math::vec2(16, 32));
 
   printf("%f\n", ge.m_position.x);
 
@@ -94,7 +94,7 @@ int game::run(double fps) {
       }
     }
 
-    //ImGui::SFML::Update(m_window, clock.getElapsedTime());
+    // ImGui::SFML::Update(m_window, clock.getElapsedTime());
 
     while (accumulator >= ups) {
       accumulator -= ups;
@@ -115,6 +115,7 @@ int game::update(double dt) {
   m_current_world->update(dt);
   ge.update(dt);
 
+  m_input_manager.update();
   return 0;
 }
 
@@ -130,7 +131,7 @@ int game::render() {
 
 int game::clean() {
   m_window.close();
-  //ImGui::SFML::Shutdown();
+  // ImGui::SFML::Shutdown();
   return 0;
 }
 

@@ -10,7 +10,7 @@
 namespace lost::entities {
 
 game_entity::game_entity(entity *e, math::vec2 p, math::vec2 v, math::vec2 s)
-    : m_entity(e), m_position(p), m_velocity(v), m_half_sizes(s) {}
+    : m_entity(e), m_position(p), m_velocity(v), m_size(s) {}
 
 int game_entity::update(double dt) {
   return scripting::execute_script(m_entity->update, this);
@@ -35,13 +35,8 @@ int game_entity::player_update(double dt) {
 int game_entity::player_render() {
   sf::Sprite s;
   s.setTexture(*gfx::get_texture("1x2.png"));
-  s.setOrigin(m_half_sizes.x, m_half_sizes.y);
   s.setPosition(m_position.x, m_position.y);
   g_game->m_window.draw(s);
-  sf::RectangleShape rect(sf::Vector2f(m_half_sizes.x * 2, m_half_sizes.y * 2));
-  rect.setPosition(
-      m_position.x - m_half_sizes.x, m_position.y - m_half_sizes.y);
-  g_game->m_window.draw(rect);
   return 0;
 }
 

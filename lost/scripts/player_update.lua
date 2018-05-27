@@ -5,6 +5,10 @@ local u = key_down("up") and 1 or 0;
 local d = key_down("down") and 1 or 0;
 
 set_hsp((r-l) * 0.8);
-set_vsp((d-u) * 0.8);
+set_vsp(get_vsp() + 0.1);
 
-call_script("move_collide");
+if key_pressed("jump") then
+  set_vsp(get_vsp() - 1.5)
+end
+
+move_collide()

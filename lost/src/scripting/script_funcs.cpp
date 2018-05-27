@@ -50,7 +50,7 @@ int tile_layer_get_cell_x_at_pixel(lua_State *L) {
 
   double x = lua_tonumber(L, 2);
 
-  lua_pushnumber(L, tl->x_coord_to_index(x) * tl->m_tile_size.x);
+  lua_pushnumber(L, tl->x_coord_to_index(x));
 
   return 1;
 }
@@ -61,7 +61,7 @@ int tile_layer_get_cell_y_at_pixel(lua_State *L) {
 
   double y = lua_tonumber(L, 2);
 
-  lua_pushnumber(L, tl->y_coord_to_index(y) * tl->m_tile_size.y);
+  lua_pushnumber(L, tl->y_coord_to_index(y));
 
   return 1;
 }

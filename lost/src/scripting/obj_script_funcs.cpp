@@ -89,7 +89,7 @@ int hitbox_right(lua_State *L) {
   lost::entities::game_entity *e =
       (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
 
-  lua_pushnumber(L, e->m_position.x + e->m_half_sizes.x);
+  lua_pushnumber(L, e->m_position.x + e->m_size.x);
 
   return 1;
 }
@@ -99,7 +99,7 @@ int hitbox_left(lua_State *L) {
   lost::entities::game_entity *e =
       (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
 
-  lua_pushnumber(L, e->m_position.x - e->m_half_sizes.x);
+  lua_pushnumber(L, e->m_position.x);
 
   return 1;
 }
@@ -109,7 +109,7 @@ int hitbox_top(lua_State *L) {
   lost::entities::game_entity *e =
       (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
 
-  lua_pushnumber(L, e->m_position.y - e->m_half_sizes.y);
+  lua_pushnumber(L, e->m_position.y);
 
   return 1;
 }
@@ -119,7 +119,7 @@ int hitbox_bottom(lua_State *L) {
   lost::entities::game_entity *e =
       (lost::entities::game_entity *)lua_topointer(L, lua_gettop(L));
 
-  lua_pushnumber(L, e->m_position.y + e->m_half_sizes.y);
+  lua_pushnumber(L, e->m_position.y + e->m_size.y);
 
   return 1;
 }

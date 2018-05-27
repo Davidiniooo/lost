@@ -22,7 +22,7 @@ public:
   entity *   m_entity;
   math::vec2 m_position;
   math::vec2 m_velocity;
-  math::vec2 m_half_sizes;
+  math::vec2 m_size;
 };
 
 } // namespace lost::entities
