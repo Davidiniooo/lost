@@ -24,7 +24,7 @@ public:
   sf::Vector2u m_tile_size;
 
   int get_at(int x, int y);
-  int get_at_coord(int x, int y);
+  int get_at_coord(double x, double y);
   int x_coord_to_index(double x);
   int y_coord_to_index(double y);
 

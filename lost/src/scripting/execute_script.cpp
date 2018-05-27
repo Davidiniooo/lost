@@ -8,6 +8,8 @@
 #include "entities/game_entity.h"
 #include "scripting/move_collide.h"
 
+#include "scripting/on_floor.h"
+
 namespace lost::scripting {
 
 void register_funcs(lua_State *state) {
@@ -72,6 +74,7 @@ void register_obj_funcs(lua_State *state) {
   lua_register(state, "hitbox_top", funcs::hitbox_top);
   lua_register(state, "hitbox_bottom", funcs::hitbox_bottom);
   lua_register(state, "move_collide", funcs::move_collide);
+  lua_register(state, "on_floor", funcs::on_floor);
 }
 
 int execute_script(std::string path, lost::entities::game_entity *e) {

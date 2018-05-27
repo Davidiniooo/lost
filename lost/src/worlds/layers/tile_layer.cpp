@@ -81,12 +81,12 @@ int tile_layer::get_at(int x, int y) {
   return m_raw_tiles[y * m_width + x];
 }
 
-int tile_layer::get_at_coord(int x, int y) {
+int tile_layer::get_at_coord(double x, double y) {
   if (x * y < 0 || x * y >= m_width * m_height)
     return 0;
 
-  return m_raw_tiles[(int)floor((double)y / (double)m_tile_size.y) * m_width
-         + (int)floor((double)x / (double)m_tile_size.x)];
+  return m_raw_tiles[(int)floor(y / (double)m_tile_size.y) * m_width
+         + (int)floor(x / (double)m_tile_size.x)];
 }
 
 int tile_layer::x_coord_to_index(double x) {

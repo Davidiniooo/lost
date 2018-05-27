@@ -1,3 +1,5 @@
+#pragma once
+
 #include <lua5.3/lua.hpp>
 
 namespace lost::scripting::funcs {

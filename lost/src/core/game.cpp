@@ -112,6 +112,10 @@ int game::run(double fps) {
 }
 
 int game::update(double dt) {
+  if (m_input_manager.key_pressed(sf::Keyboard::Escape)) {
+    m_running = false;
+  }
+
   m_current_world->update(dt);
   ge.update(dt);
 

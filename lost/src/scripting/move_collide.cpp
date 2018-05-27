@@ -5,17 +5,7 @@
 #include "worlds/layers/tile_layer.h"
 #include "worlds/world.h"
 #include <math.h>
-
-lost::worlds::layers::tile_layer *cpp_get_tile_layer(std::string name) {
-  for (uint i = 0; i < lost::g_game->m_current_world->m_layers.size(); ++i) {
-    if (lost::g_game->m_current_world->m_layers[i]->name.compare(name) == 0) {
-      return (lost::worlds::layers::tile_layer *)(lost::g_game->m_current_world
-                                                      ->m_layers[i]);
-    }
-  }
-
-  return nullptr;
-}
+#include "scripting/cpp_get_tile_layer.h"
 
 namespace lost::scripting::funcs {
 
@@ -85,8 +75,8 @@ int move_collide(lua_State *L) {
 
     bool col = false;
 
-    for (int i = floor(e_x / tile_height);
-         i <= floor((e_x + e_width - 1) / tile_height);
+    for (int i = floor(e_x / tile_width);
+         i <= floor((e_x + e_width - 1) / tile_width);
          ++i) {
       int c =
           tile_layer->get_at(i, floor((hitbox_side_v + e_vsp) / tile_height));
