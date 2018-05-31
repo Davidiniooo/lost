@@ -11,7 +11,7 @@
     ],
     "primary": {
       "name": "Worn Dagger",
-      "dps": 7
+      "level": 0
     }
   },
   "update": "player_update",

@@ -4,6 +4,18 @@
   "item_type": 3,
   "texture": "items/worn_dagger.png",
   "weapon_type": 17,
+  "damage": 5,
   "attack_rate": 1,
-  "attack_range": 16
+  "attack_range": 16,
+  "max_level": 10,
+  "upgrades": {
+    "5": {
+      "attack_rate": 0.1,
+      "damage": 2
+    },
+    "10": {
+      "attack_rate": 0.15,
+      "damage": 3
+    }
+  }
 }
